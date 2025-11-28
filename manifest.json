@@ -1,16 +1,13 @@
 {
-  "name": "Holy Link - Mi Daddy God Owns It All",
+  "name": "Holy Link - Music Smart Links",
   "short_name": "Holy Link",
-  "description": "Stream Mi Daddy God Owns It All on all platforms",
+  "description": "Create beautiful smart links for your music",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
   "orientation": "portrait-primary",
-  "categories": ["music", "entertainment"],
-  "lang": "en",
-  "dir": "ltr",
   "icons": [
     {
       "src": "icon-192.png",
@@ -23,22 +20,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Stream Now",
-      "short_name": "Stream",
-      "description": "Open streaming platforms",
-      "url": "/?action=stream",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

@@ -3,32 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="Stream 'Mi Daddy God Owns It All' on all platforms - Spotify, Apple Music, YouTube, Audiomack, Boomplay and more">
-  <meta name="keywords" content="Mi Daddy God Owns It All, gospel music, streaming, Spotify, Apple Music">
-  <meta name="author" content="Holy Link">
+  <meta name="description" content="Holy Link - Create beautiful smart links for your music">
+  <title>Holy Link - Music Smart Links</title>
   
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="music.song">
-  <meta property="og:title" content="Mi Daddy God Owns It All">
-  <meta property="og:description" content="Stream on all platforms - Spotify, Apple Music, YouTube & more">
-  <meta property="og:image" content="icon-512.png">
-  <meta property="og:url" content="https://holylink.vercel.app">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mi Daddy God Owns It All">
-  <meta name="twitter:description" content="Stream on all platforms">
-  
-  <!-- PWA Configuration -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#667eea">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Holy Link">
   <link rel="apple-touch-icon" href="icon-192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="icon-192.png">
-  
-  <title>Holy Link • Mi Daddy God Owns It All</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    /* ==================== CSS RESET ==================== */
+    /* ==================== RESET & VARIABLES ==================== */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -44,797 +27,798 @@
       -webkit-tap-highlight-color: transparent;
     }
     
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-    
-    /* ==================== CSS VARIABLES ==================== */
     :root {
-      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --accent-color: #1db954;
+      --primary: #667eea;
+      --primary-dark: #764ba2;
+      --accent: #1db954;
       --accent-hover: #1ed760;
+      --danger: #ff4757;
+      --warning: #ffa502;
+      --success: #2ed573;
+      --bg-dark: #0f0f1a;
+      --bg-card: rgba(255, 255, 255, 0.1);
+      --bg-card-solid: #1a1a2e;
       --text-primary: #ffffff;
       --text-secondary: rgba(255, 255, 255, 0.8);
-      --text-muted: rgba(255, 255, 255, 0.6);
-      --card-bg: rgba(255, 255, 255, 0.1);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.4);
-      --border-radius-sm: 12px;
-      --border-radius-md: 20px;
-      --border-radius-lg: 30px;
-      --border-radius-full: 50px;
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.3s ease;
-      --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --text-muted: rgba(255, 255, 255, 0.5);
+      --border: rgba(255, 255, 255, 0.1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 50px;
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      --transition: 0.3s ease;
+      --font: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
     [data-theme="light"] {
-      --primary-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --bg-dark: #f5f7fa;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-solid: #ffffff;
       --text-primary: #1a1a2e;
       --text-secondary: rgba(26, 26, 46, 0.8);
-      --text-muted: rgba(26, 26, 46, 0.6);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-border: rgba(0, 0, 0, 0.1);
+      --text-muted: rgba(26, 26, 46, 0.5);
+      --border: rgba(0, 0, 0, 0.1);
     }
     
-    /* ==================== BASE STYLES ==================== */
+    /* ==================== BASE ==================== */
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
-      font-family: var(--font-family);
-      background: var(--primary-gradient);
+      font-family: var(--font);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: var(--text-primary);
       min-height: 100vh;
       line-height: 1.6;
-      overflow-x: hidden;
-      background-attachment: fixed;
     }
     
-    a {
-      text-decoration: none;
-      color: inherit;
+    /* ==================== UTILITIES ==================== */
+    .hidden { display: none !important; }
+    .text-center { text-align: center; }
+    .text-muted { color: var(--text-muted); }
+    .mt-1 { margin-top: 8px; }
+    .mt-2 { margin-top: 16px; }
+    .mt-3 { margin-top: 24px; }
+    .mb-1 { margin-bottom: 8px; }
+    .mb-2 { margin-bottom: 16px; }
+    .mb-3 { margin-bottom: 24px; }
+    
+    /* ==================== APP CONTAINER ==================== */
+    .app {
+      min-height: 100vh;
     }
     
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      outline: none;
+    /* ==================== SCREENS ==================== */
+    .screen {
+      display: none;
+      min-height: 100vh;
+      padding: 20px;
     }
     
-    input {
-      font-family: inherit;
-      outline: none;
-      border: none;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
+    .screen.active {
       display: block;
     }
     
-    /* ==================== LAYOUT ==================== */
-    .app-container {
+    .screen-content {
       max-width: 480px;
       margin: 0 auto;
-      padding: 20px;
-      padding-bottom: 100px;
-      position: relative;
-      z-index: 1;
     }
     
-    /* ==================== PARTICLES BACKGROUND ==================== */
-    #particles-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* ==================== WELCOME SCREEN ==================== */
+    .welcome-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    
+    .welcome-logo {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .welcome-title {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #fff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .welcome-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 300px;
+    }
+    
+    .welcome-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
+      max-width: 320px;
     }
     
-    /* ==================== THEME TOGGLE ==================== */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
+    /* ==================== BUTTONS ==================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border: none;
+      border-radius: var(--radius-full);
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
+    
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+    
+    .btn-block {
+      width: 100%;
+    }
+    
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    /* ==================== FORMS ==================== */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
+      background: var(--bg-card-solid);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font);
+      font-size: 16px;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+    
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .form-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    
+    .form-error {
+      color: var(--danger);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+    
+    /* ==================== CARDS ==================== */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    /* ==================== AUTH SCREENS ==================== */
+    .auth-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .auth-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .auth-logo {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .auth-title {
+      font-size: 28px;
+      font-weight: 800;
+    }
+    
+    .auth-subtitle {
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+    
+    .auth-form {
+      max-width: 400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .auth-footer {
+      text-align: center;
+      margin-top: 24px;
+    }
+    
+    .auth-footer a {
+      color: white;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    /* ==================== SETUP WIZARD ==================== */
+    .wizard {
+      padding: 20px;
+    }
+    
+    .wizard-progress {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    
+    .wizard-step {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: var(--transition);
+    }
+    
+    .wizard-step.active {
+      background: white;
+      transform: scale(1.2);
+    }
+    
+    .wizard-step.completed {
+      background: var(--accent);
+    }
+    
+    .wizard-content {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    
+    .wizard-title {
+      font-size: 28px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .wizard-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+    
+    .wizard-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    
+    .wizard-buttons .btn {
+      flex: 1;
+    }
+    
+    /* ==================== IMAGE UPLOAD ==================== */
+    .image-upload {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .image-preview {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--bg-card-solid);
+      border: 4px dashed var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      margin: 0 auto 16px;
+      overflow: hidden;
       cursor: pointer;
-      z-index: 1000;
-      transition: var(--transition-normal);
-      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
     }
     
-    .theme-toggle:hover {
-      transform: scale(1.1);
+    .image-preview:hover {
+      border-color: var(--accent);
     }
     
-    .theme-toggle:active {
-      transform: scale(0.95);
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
-    /* ==================== INSTALL BANNER ==================== */
-    .install-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      padding: 16px 20px;
+    .image-preview-placeholder {
+      font-size: 48px;
+      color: var(--text-muted);
+    }
+    
+    .image-upload-input {
       display: none;
+    }
+    
+    .image-upload-label {
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    
+    /* ==================== PLATFORM INPUTS ==================== */
+    .platform-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .platform-input {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card-solid);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      transition: var(--transition);
+    }
+    
+    .platform-input:focus-within {
+      border-color: var(--accent);
+    }
+    
+    .platform-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    .platform-icon.spotify { background: #1db954; }
+    .platform-icon.apple { background: #fc3c44; }
+    .platform-icon.youtube { background: #ff0000; }
+    .platform-icon.amazon { background: #00a8e1; }
+    .platform-icon.deezer { background: #a238ff; }
+    .platform-icon.tidal { background: #000; }
+    .platform-icon.soundcloud { background: #ff5500; }
+    .platform-icon.audiomack { background: #ffa200; }
+    .platform-icon.boomplay { background: #e91e63; }
+    .platform-icon.pandora { background: #005483; }
+    .platform-icon.tiktok { background: #000; }
+    .platform-icon.instagram { background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); }
+    .platform-icon.twitter { background: #1da1f2; }
+    .platform-icon.facebook { background: #1877f2; }
+    .platform-icon.website { background: #667eea; }
+    
+    .platform-input input {
+      flex: 1;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+    }
+    
+    .platform-input input::placeholder {
+      color: var(--text-muted);
+    }
+    
+    /* ==================== DASHBOARD ==================== */
+    .dashboard {
+      padding-bottom: 100px;
+    }
+    
+    .dashboard-header {
+      display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
-      z-index: 1000;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+      padding: 20px 0;
+      margin-bottom: 20px;
     }
     
-    .install-banner.show {
+    .dashboard-logo {
+      font-size: 24px;
+      font-weight: 800;
+    }
+    
+    .dashboard-actions {
       display: flex;
+      gap: 10px;
     }
     
-    .install-banner p {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    
-    .install-banner button {
-      padding: 10px 20px;
-      background: white;
-      color: #667eea;
-      border-radius: var(--border-radius-full);
-      font-weight: 700;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-    
-    .install-banner .close-btn {
-      background: transparent;
-      color: white;
-      padding: 5px;
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 20px;
+      cursor: pointer;
+      transition: var(--transition);
     }
     
-    /* ==================== HEADER ==================== */
-    .header {
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* ==================== STATS GRID ==================== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+    
+    /* ==================== RELEASE CARD ==================== */
+    .release-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .release-header {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+    }
+    
+    .release-cover {
+      width: 100px;
+      height: 100px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      background: var(--bg-card-solid);
+    }
+    
+    .release-info {
+      flex: 1;
+    }
+    
+    .release-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .release-artist {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    
+    .release-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    
+    .release-actions {
+      display: flex;
+      gap: 10px;
+      padding: 0 20px 20px;
+    }
+    
+    .release-actions .btn {
+      flex: 1;
+    }
+    
+    /* ==================== PREVIEW PAGE ==================== */
+    .preview-container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .preview-header {
       text-align: center;
       padding: 40px 0 30px;
     }
     
-    .avatar-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    
-    .avatar {
-      width: 150px;
-      height: 150px;
+    .preview-avatar {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      border: 5px solid rgba(255, 255, 255, 0.3);
-      box-shadow: var(--shadow-lg);
+      border: 4px solid rgba(255, 255, 255, 0.3);
       object-fit: cover;
-      background: var(--card-bg);
+      margin-bottom: 16px;
     }
     
-    .verified-badge {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      width: 36px;
-      height: 36px;
-      background: var(--accent-color);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      border: 3px solid white;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .artist-name {
-      font-size: 32px;
+    .preview-name {
+      font-size: 28px;
       font-weight: 800;
       margin-bottom: 8px;
-      background: linear-gradient(90deg, #fff, #e0e0e0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
     
-    [data-theme="light"] .artist-name {
-      background: linear-gradient(90deg, #1a1a2e, #333);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .artist-bio {
-      font-size: 16px;
+    .preview-bio {
       color: var(--text-secondary);
-      max-width: 300px;
-      margin: 0 auto;
+      font-size: 14px;
     }
     
-    /* ==================== SONG CARD ==================== */
-    .song-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-md);
-      padding: 25px;
-      margin: 30px 0;
+    .preview-song {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
       text-align: center;
+      margin: 24px 0;
     }
     
-    .song-cover {
-      width: 200px;
-      height: 200px;
-      border-radius: var(--border-radius-md);
-      margin: 0 auto 20px;
-      box-shadow: var(--shadow-md);
+    .preview-song-cover {
+      width: 180px;
+      height: 180px;
+      border-radius: var(--radius-md);
       object-fit: cover;
-      background: var(--card-bg);
+      margin: 0 auto 16px;
+      box-shadow: var(--shadow);
     }
     
-    .song-title {
-      font-size: 24px;
+    .preview-song-title {
+      font-size: 22px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
     
-    .song-meta {
+    .preview-song-meta {
       font-size: 14px;
       color: var(--text-muted);
     }
     
-    /* ==================== STREAMING BUTTONS ==================== */
-    .streaming-section {
-      margin: 30px 0;
-    }
-    
-    .section-title {
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .section-title::before,
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--card-border);
-    }
-    
-    .streaming-buttons {
+    .preview-buttons {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin: 24px 0;
     }
     
-    .stream-btn {
+    .preview-btn {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 18px 24px;
-      border-radius: var(--border-radius-full);
-      font-weight: 600;
-      font-size: 16px;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg-card-solid);
+      border-radius: var(--radius-full);
       color: white;
-      transition: var(--transition-normal);
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
     }
     
-    .stream-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
+    .preview-btn:hover {
+      transform: translateX(5px);
     }
     
-    .stream-btn:hover::before {
-      left: 100%;
-    }
-    
-    .stream-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .stream-btn:active {
-      transform: translateY(0);
-    }
-    
-    .stream-btn .icon {
-      width: 28px;
-      height: 28px;
+    .preview-btn .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
-    .stream-btn .icon img,
-    .stream-btn .icon svg {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .preview-btn .arrow {
+      margin-left: auto;
+      opacity: 0.5;
     }
     
-    .stream-btn .label {
-      flex: 1;
-      text-align: left;
-    }
-    
-    .stream-btn .arrow {
-      opacity: 0.7;
-      font-size: 18px;
-    }
-    
-    /* Platform Colors */
-    .btn-spotify { background: linear-gradient(135deg, #1db954, #1ed760); }
-    .btn-apple { background: linear-gradient(135deg, #fc3c44, #ff6b6b); }
-    .btn-youtube { background: linear-gradient(135deg, #ff0000, #ff4444); }
-    .btn-amazon { background: linear-gradient(135deg, #00a8e1, #00d4ff); }
-    .btn-deezer { background: linear-gradient(135deg, #a238ff, #c77dff); }
-    .btn-tidal { background: linear-gradient(135deg, #000000, #333333); border: 1px solid rgba(255,255,255,0.2); }
-    .btn-soundcloud { background: linear-gradient(135deg, #ff5500, #ff8800); }
-    .btn-audiomack { background: linear-gradient(135deg, #ffa200, #ffb833); }
-    .btn-boomplay { background: linear-gradient(135deg, #e91e63, #ff4081); }
-    .btn-pandora { background: linear-gradient(135deg, #005483, #0088cc); }
-    .btn-napster { background: linear-gradient(135deg, #000000, #1a1a1a); border: 1px solid rgba(255,255,255,0.2); }
-    .btn-anghami { background: linear-gradient(135deg, #7b2d8e, #9c27b0); }
-    .btn-jiosaavn { background: linear-gradient(135deg, #2bc5b4, #00e5cc); }
-    .btn-gaana { background: linear-gradient(135deg, #e72c30, #ff5252); }
-    .btn-yandex { background: linear-gradient(135deg, #ffcc00, #ffe066); color: #000; }
-    .btn-vk { background: linear-gradient(135deg, #4a76a8, #6a9bc9); }
-    .btn-tiktok { background: linear-gradient(135deg, #000000, #25f4ee); border: 1px solid #fe2c55; }
-    .btn-shazam { background: linear-gradient(135deg, #0088ff, #00aaff); }
-    .btn-genius { background: linear-gradient(135deg, #ffff64, #fff700); color: #000; }
-    
-    /* Pre-save Button */
-    .btn-presave {
-      background: linear-gradient(135deg, #f81e70, #ff6b6b);
-      animation: pulse-glow 2s infinite;
-    }
-    
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(248, 30, 112, 0.7); }
-      50% { box-shadow: 0 0 0 15px rgba(248, 30, 112, 0); }
-    }
-    
-    /* ==================== STATS SECTION ==================== */
-    .stats-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-md);
-      padding: 25px;
+    .preview-social {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
       margin: 30px 0;
     }
     
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    .preview-social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      transition: var(--transition);
+    }
+    
+    .preview-social-link:hover {
+      transform: translateY(-3px);
+    }
+    
+    .preview-footer {
       text-align: center;
-    }
-    
-    .stat-item {
-      padding: 10px;
-    }
-    
-    .stat-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent-color);
-      margin-bottom: 5px;
-    }
-    
-    .stat-label {
+      padding: 30px;
       font-size: 12px;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
     
-    /* ==================== COUNTRIES SECTION ==================== */
-    .countries-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-md);
-      padding: 25px;
-      margin: 30px 0;
-    }
-    
-    .countries-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      display: flex;
+    /* ==================== MODALS ==================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: none;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
     }
     
-    .country-list {
+    .modal-overlay.active {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
     }
     
-    .country-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .country-flag {
-      font-size: 28px;
-    }
-    
-    .country-info {
-      flex: 1;
-    }
-    
-    .country-name {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    
-    .country-bar {
-      height: 6px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 3px;
-      margin-top: 5px;
-      overflow: hidden;
-    }
-    
-    .country-bar-fill {
-      height: 100%;
-      background: var(--accent-color);
-      border-radius: 3px;
-      transition: width 1s ease;
-    }
-    
-    .country-percent {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent-color);
-    }
-    
-    /* ==================== UNLOCK SECTION ==================== */
-    .unlock-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-md);
+    .modal {
+      background: var(--bg-card-solid);
+      border-radius: var(--radius-lg);
       padding: 30px;
-      margin: 30px 0;
-      text-align: center;
-    }
-    
-    .unlock-icon {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
-    
-    .unlock-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    
-    .unlock-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-    }
-    
-    .unlock-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .unlock-input {
+      max-width: 400px;
       width: 100%;
-      padding: 16px 20px;
-      background: white;
-      border-radius: var(--border-radius-full);
-      font-size: 16px;
-      color: #333;
-      text-align: center;
-    }
-    
-    .unlock-input::placeholder {
-      color: #999;
-    }
-    
-    .unlock-btn {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, #f81e70, #ff6b6b);
-      color: white;
-      border-radius: var(--border-radius-full);
-      font-size: 16px;
-      font-weight: 700;
-      transition: var(--transition-normal);
-    }
-    
-    .unlock-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    /* ==================== COMMENTS SECTION ==================== */
-    .comments-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-md);
-      padding: 25px;
-      margin: 30px 0;
-    }
-    
-    .comments-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .comments-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-height: 300px;
+      max-height: 90vh;
       overflow-y: auto;
     }
     
-    .comment-item {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      border-radius: var(--border-radius-sm);
-    }
-    
-    .comment-header {
+    .modal-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    
-    .comment-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--accent-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-    }
-    
-    .comment-name {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    
-    .comment-location {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-    
-    .comment-text {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-    
-    .add-comment {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    
-    .comment-input {
-      flex: 1;
-      padding: 14px 18px;
-      background: white;
-      border-radius: var(--border-radius-full);
-      font-size: 14px;
-      color: #333;
-    }
-    
-    .comment-submit {
-      padding: 14px 24px;
-      background: var(--accent-color);
-      color: white;
-      border-radius: var(--border-radius-full);
-      font-weight: 600;
-      font-size: 14px;
-      transition: var(--transition-normal);
-    }
-    
-    .comment-submit:hover {
-      background: var(--accent-hover);
-    }
-    
-    /* ==================== SOCIAL LINKS ==================== */
-    .social-section {
-      margin: 30px 0;
-      text-align: center;
-    }
-    
-    .social-title {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 15px;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    
-    .social-link {
-      width: 50px;
-      height: 50px;
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      transition: var(--transition-normal);
-    }
-    
-    .social-link:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    /* ==================== SHARE SECTION ==================== */
-    .share-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-md);
-      padding: 25px;
-      margin: 30px 0;
-      text-align: center;
-    }
-    
-    .share-title {
-      font-size: 18px;
-      font-weight: 700;
+      justify-content: space-between;
       margin-bottom: 20px;
     }
     
-    .share-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
     }
     
-    .share-btn {
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius-full);
+      justify-content: center;
       color: var(--text-primary);
-      font-size: 14px;
-      font-weight: 600;
-      transition: var(--transition-normal);
     }
     
-    .share-btn:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-    
-    /* ==================== QR CODE SECTION ==================== */
-    .qr-section {
-      text-align: center;
-      margin: 30px 0;
-    }
-    
-    .qr-container {
-      display: inline-block;
-      background: white;
-      padding: 20px;
-      border-radius: var(--border-radius-md);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .qr-container canvas {
-      display: block;
-    }
-    
-    .qr-label {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 15px;
-    }
-    
-    /* ==================== FOOTER ==================== */
-    .footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-    
-    .footer-logo {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--accent-color), #48dbfb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .footer a {
-      color: var(--accent-color);
-    }
-    
-    /* ==================== TOAST NOTIFICATION ==================== */
+    /* ==================== TOAST ==================== */
     .toast {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: #333;
-      color: white;
+      background: var(--bg-card-solid);
+      color: var(--text-primary);
       padding: 16px 32px;
-      border-radius: var(--border-radius-full);
+      border-radius: var(--radius-full);
       font-size: 14px;
       font-weight: 600;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow);
       z-index: 2000;
       opacity: 0;
       transition: all 0.3s ease;
@@ -845,735 +829,1029 @@
       transform: translateX(-50%) translateY(0);
     }
     
-    /* ==================== MODAL ==================== */
-    .modal-overlay {
+    .toast.success { border-left: 4px solid var(--success); }
+    .toast.error { border-left: 4px solid var(--danger); }
+    .toast.warning { border-left: 4px solid var(--warning); }
+    
+    /* ==================== BOTTOM NAV ==================== */
+    .bottom-nav {
       position: fixed;
-      top: 0;
+      bottom: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 3000;
-      padding: 20px;
-    }
-    
-    .modal-overlay.show {
+      background: var(--bg-card-solid);
+      border-top: 1px solid var(--border);
       display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 100;
     }
     
-    .modal-content {
-      background: white;
-      border-radius: var(--border-radius-md);
-      padding: 30px;
-      max-width: 400px;
-      width: 100%;
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .nav-item.active {
+      color: var(--accent);
+    }
+    
+    .nav-item .icon {
+      font-size: 24px;
+    }
+    
+    /* ==================== EMPTY STATE ==================== */
+    .empty-state {
       text-align: center;
-      color: #333;
+      padding: 60px 20px;
     }
     
-    .modal-icon {
+    .empty-state .icon {
       font-size: 64px;
       margin-bottom: 20px;
+      opacity: 0.5;
     }
     
-    .modal-title {
-      font-size: 24px;
-      font-weight: 700;
+    .empty-state h3 {
+      font-size: 20px;
       margin-bottom: 10px;
     }
     
-    .modal-text {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 25px;
-    }
-    
-    .modal-btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--accent-color);
-      color: white;
-      border-radius: var(--border-radius-full);
-      font-size: 16px;
-      font-weight: 700;
-    }
-    
-    /* ==================== LOADING SPINNER ==================== */
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .empty-state p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
     }
     
     /* ==================== RESPONSIVE ==================== */
     @media (max-width: 480px) {
-      .app-container {
-        padding: 15px;
+      .welcome-title {
+        font-size: 32px;
       }
       
-      .artist-name {
-        font-size: 26px;
-      }
-      
-      .avatar {
-        width: 120px;
-        height: 120px;
+      .wizard-title {
+        font-size: 24px;
       }
       
       .stats-grid {
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
       }
       
       .stat-value {
-        font-size: 22px;
-      }
-      
-      .stream-btn {
-        padding: 16px 20px;
-        font-size: 15px;
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Particles Background -->
-  <canvas id="particles-canvas"></canvas>
-  
-  <!-- Theme Toggle -->
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-    <span id="themeIcon">🌙</span>
-  </button>
-  
-  <!-- Install Banner -->
-  <div class="install-banner" id="installBanner">
-    <p>📱 Add Holy Link to Home Screen</p>
-    <button id="installBtn">Install</button>
-    <button class="close-btn" id="closeBanner">×</button>
+  <div class="app" id="app">
+    
+    <!-- ==================== WELCOME SCREEN ==================== -->
+    <div class="screen welcome-screen" id="welcomeScreen">
+      <div class="welcome-logo">🎵</div>
+      <h1 class="welcome-title">Holy Link</h1>
+      <p class="welcome-subtitle">Create beautiful smart links for your music in minutes</p>
+      <div class="welcome-buttons">
+        <button class="btn btn-primary btn-block" onclick="showScreen('signupScreen')">
+          Get Started Free
+        </button>
+        <button class="btn btn-secondary btn-block" onclick="showScreen('loginScreen')">
+          I Have an Account
+        </button>
+      </div>
+    </div>
+    
+    <!-- ==================== SIGNUP SCREEN ==================== -->
+    <div class="screen auth-screen" id="signupScreen">
+      <div class="screen-content">
+        <div class="auth-header">
+          <div class="auth-logo">🎵</div>
+          <h1 class="auth-title">Create Account</h1>
+          <p class="auth-subtitle">Start sharing your music today</p>
+        </div>
+        <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="signupName" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="signupEmail" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" id="signupPassword" placeholder="Min. 6 characters" minlength="6" required>
+          </div>
+          <button type="submit" class="btn btn-accent btn-block">Create Account</button>
+        </form>
+        <div class="auth-footer">
+          Already have an account? <a onclick="showScreen('loginScreen')">Sign In</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ==================== LOGIN SCREEN ==================== -->
+    <div class="screen auth-screen" id="loginScreen">
+      <div class="screen-content">
+        <div class="auth-header">
+          <div class="auth-logo">🎵</div>
+          <h1 class="auth-title">Welcome Back</h1>
+          <p class="auth-subtitle">Sign in to your account</p>
+        </div>
+        <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" id="loginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit" class="btn btn-accent btn-block">Sign In</button>
+        </form>
+        <div class="auth-footer">
+          Don't have an account? <a onclick="showScreen('signupScreen')">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ==================== SETUP WIZARD ==================== -->
+    <div class="screen wizard" id="wizardScreen">
+      <div class="wizard-progress" id="wizardProgress">
+        <div class="wizard-step active" data-step="1"></div>
+        <div class="wizard-step" data-step="2"></div>
+        <div class="wizard-step" data-step="3"></div>
+        <div class="wizard-step" data-step="4"></div>
+      </div>
+      
+      <div class="wizard-content">
+        
+        <!-- Step 1: Artist Profile -->
+        <div class="wizard-step-content" id="wizardStep1">
+          <h2 class="wizard-title">Your Artist Profile</h2>
+          <p class="wizard-subtitle">Tell us about yourself</p>
+          
+          <div class="image-upload">
+            <div class="image-preview" onclick="document.getElementById('artistImageInput').click()">
+              <span class="image-preview-placeholder" id="artistImagePlaceholder">📷</span>
+              <img id="artistImagePreview" class="hidden" alt="Artist">
+            </div>
+            <input type="file" id="artistImageInput" class="image-upload-input" accept="image/*" onchange="handleImageUpload(this, 'artistImagePreview', 'artistImagePlaceholder')">
+            <label class="image-upload-label">Upload Profile Photo</label>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Artist/Band Name *</label>
+            <input type="text" class="form-input" id="artistName" placeholder="Your stage name" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Bio</label>
+            <textarea class="form-input form-textarea" id="artistBio" placeholder="Tell fans about yourself..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Genre</label>
+            <input type="text" class="form-input" id="artistGenre" placeholder="e.g. Gospel, Hip-Hop, Afrobeats">
+          </div>
+          
+          <div class="wizard-buttons">
+            <button class="btn btn-secondary" onclick="showScreen('dashboardScreen')">Skip</button>
+            <button class="btn btn-accent" onclick="nextWizardStep()">Continue</button>
+          </div>
+        </div>
+        
+        <!-- Step 2: Release Details -->
+        <div class="wizard-step-content hidden" id="wizardStep2">
+          <h2 class="wizard-title">Add Your Release</h2>
+          <p class="wizard-subtitle">Enter your song or album details</p>
+          
+          <div class="image-upload">
+            <div class="image-preview" onclick="document.getElementById('coverImageInput').click()">
+              <span class="image-preview-placeholder" id="coverImagePlaceholder">🎵</span>
+              <img id="coverImagePreview" class="hidden" alt="Cover">
+            </div>
+            <input type="file" id="coverImageInput" class="image-upload-input" accept="image/*" onchange="handleImageUpload(this, 'coverImagePreview', 'coverImagePlaceholder')">
+            <label class="image-upload-label">Upload Cover Art</label>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Song/Album Title *</label>
+            <input type="text" class="form-input" id="releaseTitle" placeholder="Enter title" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Release Type</label>
+            <select class="form-input" id="releaseType">
+              <option value="single">Single</option>
+              <option value="ep">EP</option>
+              <option value="album">Album</option>
+              <option value="mixtape">Mixtape</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Release Year</label>
+            <input type="number" class="form-input" id="releaseYear" placeholder="2025" value="2025">
+          </div>
+          
+          <div class="wizard-buttons">
+            <button class="btn btn-secondary" onclick="prevWizardStep()">Back</button>
+            <button class="btn btn-accent" onclick="nextWizardStep()">Continue</button>
+          </div>
+        </div>
+        
+        <!-- Step 3: Streaming Links -->
+        <div class="wizard-step-content hidden" id="wizardStep3">
+          <h2 class="wizard-title">Streaming Links</h2>
+          <p class="wizard-subtitle">Add links where fans can stream your music</p>
+          
+          <div class="platform-inputs">
+            <div class="platform-input">
+              <div class="platform-icon spotify">🎵</div>
+              <input type="url" id="linkSpotify" placeholder="Spotify link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon apple">🍎</div>
+              <input type="url" id="linkApple" placeholder="Apple Music link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon youtube">▶️</div>
+              <input type="url" id="linkYoutube" placeholder="YouTube Music link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon audiomack">🔊</div>
+              <input type="url" id="linkAudiomack" placeholder="Audiomack link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon boomplay">💥</div>
+              <input type="url" id="linkBoomplay" placeholder="Boomplay link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon deezer">💜</div>
+              <input type="url" id="linkDeezer" placeholder="Deezer link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon soundcloud">☁️</div>
+              <input type="url" id="linkSoundcloud" placeholder="SoundCloud link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon amazon">📦</div>
+              <input type="url" id="linkAmazon" placeholder="Amazon Music link">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon tidal">🌊</div>
+              <input type="url" id="linkTidal" placeholder="TIDAL link">
+            </div>
+          </div>
+          
+          <p class="form-hint mt-2">💡 Leave blank any platforms you're not on</p>
+          
+          <div class="wizard-buttons">
+            <button class="btn btn-secondary" onclick="prevWizardStep()">Back</button>
+            <button class="btn btn-accent" onclick="nextWizardStep()">Continue</button>
+          </div>
+        </div>
+        
+        <!-- Step 4: Social Links -->
+        <div class="wizard-step-content hidden" id="wizardStep4">
+          <h2 class="wizard-title">Social Media</h2>
+          <p class="wizard-subtitle">Connect with your fans everywhere</p>
+          
+          <div class="platform-inputs">
+            <div class="platform-input">
+              <div class="platform-icon instagram">📸</div>
+              <input type="url" id="socialInstagram" placeholder="Instagram profile URL">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon tiktok">🎵</div>
+              <input type="url" id="socialTiktok" placeholder="TikTok profile URL">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon twitter">🐦</div>
+              <input type="url" id="socialTwitter" placeholder="Twitter/X profile URL">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon facebook">📘</div>
+              <input type="url" id="socialFacebook" placeholder="Facebook page URL">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon youtube">▶️</div>
+              <input type="url" id="socialYoutube" placeholder="YouTube channel URL">
+            </div>
+            <div class="platform-input">
+              <div class="platform-icon website">🌐</div>
+              <input type="url" id="socialWebsite" placeholder="Your website URL">
+            </div>
+          </div>
+          
+          <div class="wizard-buttons">
+            <button class="btn btn-secondary" onclick="prevWizardStep()">Back</button>
+            <button class="btn btn-accent" onclick="completeWizard()">Finish Setup</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- ==================== DASHBOARD SCREEN ==================== -->
+    <div class="screen dashboard" id="dashboardScreen">
+      <div class="screen-content">
+        
+        <div class="dashboard-header">
+          <div class="dashboard-logo">🎵 Holy Link</div>
+          <div class="dashboard-actions">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+            <button class="icon-btn" onclick="showModal('settingsModal')" title="Settings">⚙️</button>
+          </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="statClicks">0</div>
+            <div class="stat-label">Clicks</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="statViews">0</div>
+            <div class="stat-label">Views</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="statShares">0</div>
+            <div class="stat-label">Shares</div>
+          </div>
+        </div>
+        
+        <!-- Releases -->
+        <div class="card">
+          <h3 class="card-title">Your Releases</h3>
+          <div id="releasesList">
+            <!-- Dynamically populated -->
+          </div>
+          <button class="btn btn-accent btn-block mt-2" onclick="showModal('addReleaseModal')">
+            + Add New Release
+          </button>
+        </div>
+        
+      </div>
+      
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav">
+        <div class="nav-item active" onclick="showDashboardTab('home')">
+          <span class="icon">🏠</span>
+          Home
+        </div>
+        <div class="nav-item" onclick="showDashboardTab('analytics')">
+          <span class="icon">📊</span>
+          Analytics
+        </div>
+        <div class="nav-item" onclick="previewLink()">
+          <span class="icon">👁️</span>
+          Preview
+        </div>
+        <div class="nav-item" onclick="shareLink()">
+          <span class="icon">🔗</span>
+          Share
+        </div>
+      </nav>
+    </div>
+    
+    <!-- ==================== PREVIEW SCREEN ==================== -->
+    <div class="screen" id="previewScreen">
+      <div class="preview-container" id="previewContainer">
+        <!-- Dynamically generated preview -->
+      </div>
+      <button class="btn btn-secondary" style="position:fixed;top:20px;left:20px;z-index:100;" onclick="showScreen('dashboardScreen')">
+        ← Back
+      </button>
+    </div>
+    
   </div>
   
-  <!-- Main App Container -->
-  <div class="app-container">
-    
-    <!-- Header -->
-    <header class="header">
-      <div class="avatar-container">
-        <img 
-          src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop" 
-          alt="Artist Photo" 
-          class="avatar"
-          id="artistAvatar"
-        >
-        <div class="verified-badge">✓</div>
-      </div>
-      <h1 class="artist-name" id="artistName">God's Child</h1>
-      <p class="artist-bio" id="artistBio">Gospel Artist • Worship Leader • Songwriter</p>
-    </header>
-    
-    <!-- Song Card -->
-    <section class="song-card">
-      <img 
-        src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop" 
-        alt="Album Cover" 
-        class="song-cover"
-        id="songCover"
-      >
-      <h2 class="song-title" id="songTitle">Mi Daddy God Owns It All</h2>
-      <p class="song-meta" id="songMeta">Single • 2025 • Gospel</p>
-    </section>
-    
-    <!-- Streaming Buttons -->
-    <section class="streaming-section">
-      <h3 class="section-title">Stream Now</h3>
-      <div class="streaming-buttons" id="streamingButtons">
-        <!-- Buttons will be dynamically inserted -->
-      </div>
-    </section>
-    
-    <!-- Pre-Save Section -->
-    <section class="streaming-section">
-      <h3 class="section-title">Upcoming Release</h3>
-      <div class="streaming-buttons">
-        <a href="#" class="stream-btn btn-presave" id="presaveBtn">
-          <span class="icon">⭐</span>
-          <span class="label">Pre-Save & Unlock Exclusive Content</span>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-    </section>
-    
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-value" id="totalStreams">250,431</div>
-          <div class="stat-label">Streams</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" id="totalFans">12.4K</div>
-          <div class="stat-label">Fans</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" id="totalCountries">45</div>
-          <div class="stat-label">Countries</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Top Countries -->
-    <section class="countries-section">
-      <h3 class="countries-title">🌍 Top Countries</h3>
-      <div class="country-list" id="countryList">
-        <!-- Countries will be dynamically inserted -->
-      </div>
-    </section>
-    
-    <!-- Unlock Content -->
-    <section class="unlock-section">
-      <div class="unlock-icon">🔓</div>
-      <h3 class="unlock-title">Unlock Exclusive Content</h3>
-      <p class="unlock-description">Get behind-the-scenes video, unreleased tracks & more!</p>
-      <form class="unlock-form" id="unlockForm">
-        <input type="email" class="unlock-input" id="unlockEmail" placeholder="Enter your email" required>
-        <button type="submit" class="unlock-btn">Unlock Now</button>
-      </form>
-    </section>
-    
-    <!-- Fan Comments -->
-    <section class="comments-section">
-      <h3 class="comments-title">💬 Fan Love</h3>
-      <div class="comments-list" id="commentsList">
-        <!-- Comments will be dynamically inserted -->
-      </div>
-      <div class="add-comment">
-        <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment...">
-        <button class="comment-submit" id="commentSubmit">Send</button>
-      </div>
-    </section>
-    
-    <!-- Social Links -->
-    <section class="social-section">
-      <p class="social-title">Follow the Journey</p>
-      <div class="social-links">
-        <a href="#" class="social-link" aria-label="Instagram">📸</a>
-        <a href="#" class="social-link" aria-label="TikTok">🎵</a>
-        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
-        <a href="#" class="social-link" aria-label="Facebook">📘</a>
-      </div>
-    </section>
-    
-    <!-- Share Section -->
-    <section class="share-section">
-      <h3 class="share-title">Share This Song</h3>
-      <div class="share-buttons">
-        <button class="share-btn" id="copyLinkBtn">📋 Copy Link</button>
-        <button class="share-btn" id="shareWhatsApp">💬 WhatsApp</button>
-        <button class="share-btn" id="shareTwitter">🐦 Twitter</button>
-        <button class="share-btn" id="shareFacebook">📘 Facebook</button>
-      </div>
-    </section>
-    
-    <!-- QR Code -->
-    <section class="qr-section">
-      <div class="qr-container" id="qrContainer"></div>
-      <p class="qr-label">Scan to share</p>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-logo">Holy Link</div>
-      <p>Made with ❤️ and the Holy Spirit</p>
-      <p style="margin-top: 10px;">© 2025 All Rights Reserved</p>
-    </footer>
-    
-  </div>
+  <!-- ==================== MODALS ==================== -->
   
-  <!-- Toast Notification -->
-  <div class="toast" id="toast"></div>
-  
-  <!-- Success Modal -->
-  <div class="modal-overlay" id="successModal">
-    <div class="modal-content">
-      <div class="modal-icon">🎉</div>
-      <h3 class="modal-title">You're In!</h3>
-      <p class="modal-text">Check your email for exclusive content. Welcome to the family!</p>
-      <button class="modal-btn" id="closeModal">Let's Go!</button>
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Settings</h3>
+        <button class="modal-close" onclick="hideModal('settingsModal')">×</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Holy Link URL</label>
+        <div style="display:flex;gap:10px;">
+          <input type="text" class="form-input" id="shareLinkUrl" readonly>
+          <button class="btn btn-sm btn-accent" onclick="copyShareLink()">Copy</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Theme</label>
+        <select class="form-input" onchange="setTheme(this.value)">
+          <option value="dark">Dark Mode</option>
+          <option value="light">Light Mode</option>
+        </select>
+      </div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+      <button class="btn btn-danger btn-block" onclick="logout()">Sign Out</button>
+      <button class="btn btn-secondary btn-block mt-2" onclick="resetAccount()">Delete Account</button>
     </div>
   </div>
   
-  <!-- QR Code Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Add Release Modal -->
+  <div class="modal-overlay" id="addReleaseModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Release</h3>
+        <button class="modal-close" onclick="hideModal('addReleaseModal')">×</button>
+      </div>
+      <form onsubmit="addRelease(event)">
+        <div class="form-group">
+          <label class="form-label">Title *</label>
+          <input type="text" class="form-input" id="newReleaseTitle" placeholder="Song or album title" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-input" id="newReleaseType">
+            <option value="single">Single</option>
+            <option value="ep">EP</option>
+            <option value="album">Album</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Spotify Link</label>
+          <input type="url" class="form-input" id="newReleaseSpotify" placeholder="https://open.spotify.com/...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Apple Music Link</label>
+          <input type="url" class="form-input" id="newReleaseApple" placeholder="https://music.apple.com/...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">YouTube Link</label>
+          <input type="url" class="form-input" id="newReleaseYoutube" placeholder="https://music.youtube.com/...">
+        </div>
+        <button type="submit" class="btn btn-accent btn-block">Add Release</button>
+      </form>
+    </div>
+  </div>
   
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+  
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    // ==================== CONFIGURATION ====================
-    const CONFIG = {
-      artistName: "God's Child",
-      artistBio: "Gospel Artist • Worship Leader • Songwriter",
-      songTitle: "Mi Daddy God Owns It All",
-      songMeta: "Single • 2025 • Gospel",
-      artistImage: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
-      songCover: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop",
-      baseStats: {
-        streams: 250431,
-        fans: 12400,
-        countries: 45
-      }
-    };
-    
-    // Streaming Platforms
-    const PLATFORMS = [
-      { id: 'spotify', name: 'Spotify', class: 'btn-spotify', icon: '🎵', url: 'https://open.spotify.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'apple', name: 'Apple Music', class: 'btn-apple', icon: '🍎', url: 'https://music.apple.com/search?term=Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'youtube', name: 'YouTube Music', class: 'btn-youtube', icon: '▶️', url: 'https://music.youtube.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'amazon', name: 'Amazon Music', class: 'btn-amazon', icon: '📦', url: 'https://music.amazon.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'deezer', name: 'Deezer', class: 'btn-deezer', icon: '💜', url: 'https://www.deezer.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'tidal', name: 'TIDAL', class: 'btn-tidal', icon: '🌊', url: 'https://listen.tidal.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'soundcloud', name: 'SoundCloud', class: 'btn-soundcloud', icon: '☁️', url: 'https://soundcloud.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'audiomack', name: 'Audiomack', class: 'btn-audiomack', icon: '🔊', url: 'https://audiomack.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'boomplay', name: 'Boomplay', class: 'btn-boomplay', icon: '💥', url: 'https://www.boomplay.com/search/default/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'pandora', name: 'Pandora', class: 'btn-pandora', icon: '📻', url: 'https://www.pandora.com/search/Mi%20Daddy%20God%20Owns%20It%20All/all' },
-      { id: 'anghami', name: 'Anghami', class: 'btn-anghami', icon: '🎧', url: 'https://play.anghami.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'jiosaavn', name: 'JioSaavn', class: 'btn-jiosaavn', icon: '🇮🇳', url: 'https://www.jiosaavn.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'shazam', name: 'Shazam', class: 'btn-shazam', icon: '🔍', url: 'https://www.shazam.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
-      { id: 'genius', name: 'Genius Lyrics', class: 'btn-genius', icon: '📝', url: 'https://genius.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
-    ];
-    
-    // Top Countries Data
-    const COUNTRIES = [
-      { flag: '🇳🇬', name: 'Nigeria', percent: 85 },
-      { flag: '🇺🇸', name: 'United States', percent: 62 },
-      { flag: '🇬🇭', name: 'Ghana', percent: 48 },
-      { flag: '🇬🇧', name: 'United Kingdom', percent: 35 },
-      { flag: '🇿🇦', name: 'South Africa', percent: 28 },
-    ];
-    
-    // Sample Comments
-    const COMMENTS = [
-      { name: 'Sarah', location: 'Lagos, Nigeria', text: 'This song is on repeat! God is good! 🙌', initial: 'S' },
-      { name: 'Michael', location: 'Houston, USA', text: 'My Daddy God truly owns it all! Amen! 🔥', initial: 'M' },
-      { name: 'Chioma', location: 'Accra, Ghana', text: 'This blessed my soul today. Thank you! ❤️', initial: 'C' },
-      { name: 'David', location: 'London, UK', text: 'Playing this for my whole family!', initial: 'D' },
-    ];
-    
     // ==================== STATE ====================
-    let stats = {
-      clicks: parseInt(localStorage.getItem('holylink_clicks') || '0'),
-      shares: parseInt(localStorage.getItem('holylink_shares') || '0'),
-      streams: CONFIG.baseStats.streams
-    };
+    let currentUser = null;
+    let currentWizardStep = 1;
+    const totalWizardSteps = 4;
     
-    let deferredPrompt = null;
-    
-    // ==================== DOM ELEMENTS ====================
-    const elements = {
-      themeToggle: document.getElementById('themeToggle'),
-      themeIcon: document.getElementById('themeIcon'),
-      installBanner: document.getElementById('installBanner'),
-      installBtn: document.getElementById('installBtn'),
-      closeBanner: document.getElementById('closeBanner'),
-      streamingButtons: document.getElementById('streamingButtons'),
-      countryList: document.getElementById('countryList'),
-      commentsList: document.getElementById('commentsList'),
-      commentInput: document.getElementById('commentInput'),
-      commentSubmit: document.getElementById('commentSubmit'),
-      unlockForm: document.getElementById('unlockForm'),
-      unlockEmail: document.getElementById('unlockEmail'),
-      presaveBtn: document.getElementById('presaveBtn'),
-      copyLinkBtn: document.getElementById('copyLinkBtn'),
-      shareWhatsApp: document.getElementById('shareWhatsApp'),
-      shareTwitter: document.getElementById('shareTwitter'),
-      shareFacebook: document.getElementById('shareFacebook'),
-      qrContainer: document.getElementById('qrContainer'),
-      toast: document.getElementById('toast'),
-      successModal: document.getElementById('successModal'),
-      closeModal: document.getElementById('closeModal'),
-      totalStreams: document.getElementById('totalStreams'),
-      particlesCanvas: document.getElementById('particles-canvas')
-    };
-    
-    // ==================== UTILITY FUNCTIONS ====================
-    function showToast(message) {
-      elements.toast.textContent = message;
-      elements.toast.classList.add('show');
-      setTimeout(() => elements.toast.classList.remove('show'), 3000);
-    }
-    
-    function formatNumber(num) {
-      if (num >= 1000000) {
-        return (num / 1000000).toFixed(1) + 'M';
-      } else if (num >= 1000) {
-        return (num / 1000).toFixed(1) + 'K';
-      }
-      return num.toLocaleString();
-    }
-    
-    function saveStats() {
-      localStorage.setItem('holylink_clicks', stats.clicks);
-      localStorage.setItem('holylink_shares', stats.shares);
-    }
-    
-    // ==================== PARTICLES ANIMATION ====================
-    function initParticles() {
-      const canvas = elements.particlesCanvas;
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      
-      function createParticle() {
-        return {
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speedX: Math.random() * 0.5 - 0.25,
-          speedY: Math.random() * 0.5 - 0.25,
-          opacity: Math.random() * 0.5 + 0.2
-        };
-      }
-      
-      function init() {
-        resize();
-        particles = [];
-        for (let i = 0; i < 80; i++) {
-          particles.push(createParticle());
+    // ==================== INITIALIZATION ====================
+    function init() {
+      // Check for existing user
+      const savedUser = localStorage.getItem('holylink_user');
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        if (currentUser.setupComplete) {
+          showScreen('dashboardScreen');
+          renderDashboard();
+        } else {
+          showScreen('wizardScreen');
         }
-      }
-      
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach((p, index) => {
-          p.x += p.speedX;
-          p.y += p.speedY;
-          
-          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-          
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-          ctx.fill();
-          
-          // Draw connections
-          particles.forEach((p2, index2) => {
-            if (index !== index2) {
-              const dx = p.x - p2.x;
-              const dy = p.y - p2.y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              
-              if (distance < 120) {
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 120)})`;
-                ctx.lineWidth = 0.5;
-                ctx.stroke();
-              }
-            }
-          });
-        });
-        
-        requestAnimationFrame(animate);
-      }
-      
-      window.addEventListener('resize', resize);
-      init();
-      animate();
-    }
-    
-    // ==================== RENDER FUNCTIONS ====================
-    function renderStreamingButtons() {
-      elements.streamingButtons.innerHTML = PLATFORMS.map(platform => `
-        <a href="${platform.url}" target="_blank" rel="noopener noreferrer" class="stream-btn ${platform.class}" data-platform="${platform.id}">
-          <span class="icon">${platform.icon}</span>
-          <span class="label">${platform.name}</span>
-          <span class="arrow">→</span>
-        </a>
-      `).join('');
-      
-      // Add click tracking
-      elements.streamingButtons.querySelectorAll('.stream-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          stats.clicks++;
-          saveStats();
-        });
-      });
-    }
-    
-    function renderCountries() {
-      elements.countryList.innerHTML = COUNTRIES.map(country => `
-        <div class="country-item">
-          <span class="country-flag">${country.flag}</span>
-          <div class="country-info">
-            <div class="country-name">${country.name}</div>
-            <div class="country-bar">
-              <div class="country-bar-fill" style="width: ${country.percent}%"></div>
-            </div>
-          </div>
-          <span class="country-percent">${country.percent}%</span>
-        </div>
-      `).join('');
-    }
-    
-    function renderComments() {
-      const storedComments = JSON.parse(localStorage.getItem('holylink_comments') || '[]');
-      const allComments = [...COMMENTS, ...storedComments];
-      
-      elements.commentsList.innerHTML = allComments.map(comment => `
-        <div class="comment-item">
-          <div class="comment-header">
-            <div class="comment-avatar">${comment.initial}</div>
-            <div>
-              <div class="comment-name">${comment.name}</div>
-              <div class="comment-location">${comment.location}</div>
-            </div>
-          </div>
-          <p class="comment-text">${comment.text}</p>
-        </div>
-      `).join('');
-    }
-    
-    function generateQRCode() {
-      elements.qrContainer.innerHTML = '';
-      new QRCode(elements.qrContainer, {
-        text: window.location.href,
-        width: 150,
-        height: 150,
-        colorDark: '#000000',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.M
-      });
-    }
-    
-    // ==================== STATS COUNTER ====================
-    function startStatsCounter() {
-      setInterval(() => {
-        stats.streams += Math.floor(Math.random() * 5) + 1;
-        elements.totalStreams.textContent = formatNumber(stats.streams);
-      }, 5000);
-    }
-    
-    // ==================== THEME TOGGLE ====================
-    function initTheme() {
-      const savedTheme = localStorage.getItem('holylink_theme');
-      if (savedTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        elements.themeIcon.textContent = '☀️';
-      }
-    }
-    
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('holylink_theme', newTheme);
-      elements.themeIcon.textContent = newTheme === 'light' ? '☀️' : '🌙';
-    }
-    
-    // ==================== PWA INSTALL ====================
-    function initPWAInstall() {
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        
-        // Show install banner after 5 seconds
-        setTimeout(() => {
-          if (!localStorage.getItem('holylink_install_dismissed')) {
-            elements.installBanner.classList.add('show');
-          }
-        }, 5000);
-      });
-      
-      elements.installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          const result = await deferredPrompt.userChoice;
-          if (result.outcome === 'accepted') {
-            showToast('✓ App installed successfully!');
-          }
-          deferredPrompt = null;
-          elements.installBanner.classList.remove('show');
-        }
-      });
-      
-      elements.closeBanner.addEventListener('click', () => {
-        elements.installBanner.classList.remove('show');
-        localStorage.setItem('holylink_install_dismissed', 'true');
-      });
-    }
-    
-    // ==================== SHARE FUNCTIONS ====================
-    function copyLink() {
-      const url = window.location.href;
-      
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url)
-          .then(() => showToast('✓ Link copied to clipboard!'))
-          .catch(() => fallbackCopy(url));
       } else {
-        fallbackCopy(url);
+        showScreen('welcomeScreen');
       }
       
-      stats.shares++;
-      saveStats();
-    }
-    
-    function fallbackCopy(text) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      showToast('✓ Link copied!');
-    }
-    
-    function shareWhatsApp() {
-      const text = `Check out "${CONFIG.songTitle}" by ${CONFIG.artistName}! 🎵\n${window.location.href}`;
-      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-      stats.shares++;
-      saveStats();
-    }
-    
-    function shareTwitter() {
-      const text = `Check out "${CONFIG.songTitle}" by ${CONFIG.artistName}! 🎵`;
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
-      stats.shares++;
-      saveStats();
-    }
-    
-    function shareFacebook() {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
-      stats.shares++;
-      saveStats();
-    }
-    
-    // ==================== FORM HANDLERS ====================
-    function handleUnlockSubmit(e) {
-      e.preventDefault();
-      const email = elements.unlockEmail.value.trim();
+      // Load theme
+      const savedTheme = localStorage.getItem('holylink_theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
       
-      if (!email || !email.includes('@') || !email.includes('.')) {
-        showToast('Please enter a valid email');
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(console.log);
+      }
+    }
+    
+    // ==================== SCREEN MANAGEMENT ====================
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+    }
+    
+    // ==================== TOAST ====================
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast ' + type + ' show';
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+    
+    // ==================== MODALS ====================
+    function showModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+    }
+    
+    function hideModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+    
+    // ==================== AUTH ====================
+    function handleSignup(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      
+      if (!name || !email || !password) {
+        showToast('Please fill all fields', 'error');
         return;
       }
       
-      // Store email (in production, send to your backend)
-      const emails = JSON.parse(localStorage.getItem('holylink_emails') || '[]');
-      emails.push({ email, date: new Date().toISOString() });
-      localStorage.setItem('holylink_emails', JSON.stringify(emails));
-      
-      // Show success modal
-      elements.successModal.classList.add('show');
-      elements.unlockEmail.value = '';
-    }
-    
-    function handlePresave(e) {
-      e.preventDefault();
-      showToast('⭐ Pre-saved! You\'ll be notified on release day!');
-      stats.clicks++;
-      saveStats();
-    }
-    
-    function handleAddComment() {
-      const text = elements.commentInput.value.trim();
-      
-      if (!text) {
-        showToast('Please enter a comment');
-        return;
-      }
-      
-      const newComment = {
-        name: 'You',
-        location: 'Just now',
-        text: text,
-        initial: 'Y'
+      // Create user
+      currentUser = {
+        id: Date.now().toString(),
+        name,
+        email,
+        password,
+        createdAt: new Date().toISOString(),
+        setupComplete: false,
+        profile: {},
+        releases: [],
+        stats: { clicks: 0, views: 0, shares: 0 }
       };
       
-      const storedComments = JSON.parse(localStorage.getItem('holylink_comments') || '[]');
-      storedComments.unshift(newComment);
-      localStorage.setItem('holylink_comments', JSON.stringify(storedComments));
-      
-      elements.commentInput.value = '';
-      renderComments();
-      showToast('✓ Comment added!');
+      saveUser();
+      showToast('Account created successfully!');
+      showScreen('wizardScreen');
     }
     
-    // ==================== EVENT LISTENERS ====================
-    function initEventListeners() {
-      elements.themeToggle.addEventListener('click', toggleTheme);
-      elements.unlockForm.addEventListener('submit', handleUnlockSubmit);
-      elements.presaveBtn.addEventListener('click', handlePresave);
-      elements.copyLinkBtn.addEventListener('click', copyLink);
-      elements.shareWhatsApp.addEventListener('click', shareWhatsApp);
-      elements.shareTwitter.addEventListener('click', shareTwitter);
-      elements.shareFacebook.addEventListener('click', shareFacebook);
-      elements.commentSubmit.addEventListener('click', handleAddComment);
-      elements.closeModal.addEventListener('click', () => {
-        elements.successModal.classList.remove('show');
-      });
+    function handleLogin(e) {
+      e.preventDefault();
       
-      // Enter key for comment
-      elements.commentInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          handleAddComment();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      
+      const savedUser = localStorage.getItem('holylink_user');
+      if (savedUser) {
+        const user = JSON.parse(savedUser);
+        if (user.email === email && user.password === password) {
+          currentUser = user;
+          showToast('Welcome back!');
+          if (currentUser.setupComplete) {
+            showScreen('dashboardScreen');
+            renderDashboard();
+          } else {
+            showScreen('wizardScreen');
+          }
+          return;
         }
-      });
+      }
+      
+      showToast('Invalid email or password', 'error');
     }
     
-    // ==================== SERVICE WORKER ====================
-    function registerServiceWorker() {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js')
-          .then(registration => {
-            console.log('Service Worker registered:', registration.scope);
-          })
-          .catch(error => {
-            console.log('Service Worker registration failed:', error);
-          });
+    function logout() {
+      currentUser = null;
+      hideModal('settingsModal');
+      showScreen('welcomeScreen');
+      showToast('Signed out successfully');
+    }
+    
+    function resetAccount() {
+      if (confirm('Are you sure? This will delete all your data.')) {
+        localStorage.removeItem('holylink_user');
+        currentUser = null;
+        hideModal('settingsModal');
+        showScreen('welcomeScreen');
+        showToast('Account deleted');
       }
     }
     
-    // ==================== INITIALIZE APP ====================
-    function init() {
-      initTheme();
-      initParticles();
-      renderStreamingButtons();
-      renderCountries();
-      renderComments();
-      generateQRCode();
-      startStatsCounter();
-      initPWAInstall();
-      initEventListeners();
-      registerServiceWorker();
-      
-      console.log('🎵 Holy Link initialized successfully!');
+    function saveUser() {
+      localStorage.setItem('holylink_user', JSON.stringify(currentUser));
     }
     
-    // Start app when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
+    // ==================== WIZARD ====================
+    function nextWizardStep() {
+      // Save current step data
+      if (currentWizardStep === 1) {
+        currentUser.profile = {
+          ...currentUser.profile,
+          artistName: document.getElementById('artistName').value.trim(),
+          bio: document.getElementById('artistBio').value.trim(),
+          genre: document.getElementById('artistGenre').value.trim(),
+          image: document.getElementById('artistImagePreview').src || ''
+        };
+        
+        if (!currentUser.profile.artistName) {
+          showToast('Please enter your artist name', 'error');
+          return;
+        }
+      }
+      
+      if (currentWizardStep === 2) {
+        const title = document.getElementById('releaseTitle').value.trim();
+        if (!title) {
+          showToast('Please enter a title', 'error');
+          return;
+        }
+        
+        currentUser.releases = [{
+          id: Date.now().toString(),
+          title,
+          type: document.getElementById('releaseType').value,
+          year: document.getElementById('releaseYear').value,
+          cover: document.getElementById('coverImagePreview').src || '',
+          links: {},
+          createdAt: new Date().toISOString()
+        }];
+      }
+      
+      if (currentWizardStep === 3) {
+        if (currentUser.releases.length > 0) {
+          currentUser.releases[0].links = {
+            spotify: document.getElementById('linkSpotify').value.trim(),
+            apple: document.getElementById('linkApple').value.trim(),
+            youtube: document.getElementById('linkYoutube').value.trim(),
+            audiomack: document.getElementById('linkAudiomack').value.trim(),
+            boomplay: document.getElementById('linkBoomplay').value.trim(),
+            deezer: document.getElementById('linkDeezer').value.trim(),
+            soundcloud: document.getElementById('linkSoundcloud').value.trim(),
+            amazon: document.getElementById('linkAmazon').value.trim(),
+            tidal: document.getElementById('linkTidal').value.trim()
+          };
+        }
+      }
+      
+      saveUser();
+      
+      // Move to next step
+      if (currentWizardStep < totalWizardSteps) {
+        currentWizardStep++;
+        updateWizardUI();
+      }
     }
+    
+    function prevWizardStep() {
+      if (currentWizardStep > 1) {
+        currentWizardStep--;
+        updateWizardUI();
+      }
+    }
+    
+    function updateWizardUI() {
+      // Update progress dots
+      document.querySelectorAll('.wizard-step').forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        if (index + 1 === currentWizardStep) {
+          step.classList.add('active');
+        } else if (index + 1 < currentWizardStep) {
+          step.classList.add('completed');
+        }
+      });
+      
+      // Show current step content
+      for (let i = 1; i <= totalWizardSteps; i++) {
+        const stepEl = document.getElementById(`wizardStep${i}`);
+        if (stepEl) {
+          stepEl.classList.toggle('hidden', i !== currentWizardStep);
+        }
+      }
+    }
+    
+    function completeWizard() {
+      // Save social links
+      currentUser.profile.social = {
+        instagram: document.getElementById('socialInstagram').value.trim(),
+        tiktok: document.getElementById('socialTiktok').value.trim(),
+        twitter: document.getElementById('socialTwitter').value.trim(),
+        facebook: document.getElementById('socialFacebook').value.trim(),
+        youtube: document.getElementById('socialYoutube').value.trim(),
+        website: document.getElementById('socialWebsite').value.trim()
+      };
+      
+      currentUser.setupComplete = true;
+      saveUser();
+      
+      showToast('Setup complete! 🎉');
+      showScreen('dashboardScreen');
+      renderDashboard();
+    }
+    
+    // ==================== IMAGE UPLOAD ====================
+    function handleImageUpload(input, previewId, placeholderId) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById(previewId);
+          const placeholder = document.getElementById(placeholderId);
+          preview.src = e.target.result;
+          preview.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+    
+    // ==================== DASHBOARD ====================
+    function renderDashboard() {
+      if (!currentUser) return;
+      
+      // Update stats
+      document.getElementById('statClicks').textContent = currentUser.stats.clicks || 0;
+      document.getElementById('statViews').textContent = currentUser.stats.views || 0;
+      document.getElementById('statShares').textContent = currentUser.stats.shares || 0;
+      
+      // Update share link
+      const shareUrl = `${window.location.origin}${window.location.pathname}?u=${currentUser.id}`;
+      document.getElementById('shareLinkUrl').value = shareUrl;
+      
+      // Render releases
+      const releasesList = document.getElementById('releasesList');
+      
+      if (currentUser.releases && currentUser.releases.length > 0) {
+        releasesList.innerHTML = currentUser.releases.map(release => `
+          <div class="release-card">
+            <div class="release-header">
+              <img src="${release.cover || 'https://via.placeholder.com/100x100?text=🎵'}" alt="${release.title}" class="release-cover">
+              <div class="release-info">
+                <div class="release-title">${release.title}</div>
+                <div class="release-artist">${currentUser.profile.artistName || 'Unknown Artist'}</div>
+                <div class="release-meta">${release.type} • ${release.year}</div>
+              </div>
+            </div>
+            <div class="release-actions">
+              <button class="btn btn-sm btn-secondary" onclick="editRelease('${release.id}')">Edit</button>
+              <button class="btn btn-sm btn-accent" onclick="previewLink()">Preview</button>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        releasesList.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">🎵</div>
+            <h3>No releases yet</h3>
+            <p>Add your first song or album to get started</p>
+          </div>
+        `;
+      }
+    }
+    
+    function addRelease(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('newReleaseTitle').value.trim();
+      if (!title) {
+        showToast('Please enter a title', 'error');
+        return;
+      }
+      
+      const newRelease = {
+        id: Date.now().toString(),
+        title,
+        type: document.getElementById('newReleaseType').value,
+        year: new Date().getFullYear(),
+        cover: '',
+        links: {
+          spotify: document.getElementById('newReleaseSpotify').value.trim(),
+          apple: document.getElementById('newReleaseApple').value.trim(),
+          youtube: document.getElementById('newReleaseYoutube').value.trim()
+        },
+        createdAt: new Date().toISOString()
+      };
+      
+      currentUser.releases.push(newRelease);
+      saveUser();
+      
+      hideModal('addReleaseModal');
+      renderDashboard();
+      showToast('Release added!');
+      
+      // Clear form
+      document.getElementById('newReleaseTitle').value = '';
+      document.getElementById('newReleaseSpotify').value = '';
+      document.getElementById('newReleaseApple').value = '';
+      document.getElementById('newReleaseYoutube').value = '';
+    }
+    
+    function editRelease(id) {
+      // TODO: Implement edit functionality
+      showToast('Edit feature coming soon!', 'warning');
+    }
+    
+    function showDashboardTab(tab) {
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      event.target.closest('.nav-item').classList.add('active');
+      
+      if (tab === 'analytics') {
+        showToast('Analytics feature coming soon!', 'warning');
+      }
+    }
+    
+    // ==================== PREVIEW ====================
+    function previewLink() {
+      if (!currentUser || !currentUser.releases || currentUser.releases.length === 0) {
+        showToast('Add a release first', 'warning');
+        return;
+      }
+      
+      const release = currentUser.releases[0];
+      const profile = currentUser.profile;
+      
+      const container = document.getElementById('previewContainer');
+      container.innerHTML = `
+        <div class="preview-header">
+          <img src="${profile.image || 'https://via.placeholder.com/120x120?text=🎵'}" alt="${profile.artistName}" class="preview-avatar">
+          <h1 class="preview-name">${profile.artistName || 'Artist'}</h1>
+          <p class="preview-bio">${profile.bio || profile.genre || ''}</p>
+        </div>
+        
+        <div class="preview-song">
+          <img src="${release.cover || 'https://via.placeholder.com/180x180?text=🎵'}" alt="${release.title}" class="preview-song-cover">
+          <h2 class="preview-song-title">${release.title}</h2>
+          <p class="preview-song-meta">${release.type} • ${release.year}</p>
+        </div>
+        
+        <div class="preview-buttons">
+          ${release.links.spotify ? `
+            <a href="${release.links.spotify}" target="_blank" class="preview-btn" style="background:#1db954;">
+              <span class="icon">🎵</span>
+              <span>Spotify</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.apple ? `
+            <a href="${release.links.apple}" target="_blank" class="preview-btn" style="background:#fc3c44;">
+              <span class="icon">🍎</span>
+              <span>Apple Music</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.youtube ? `
+            <a href="${release.links.youtube}" target="_blank" class="preview-btn" style="background:#ff0000;">
+              <span class="icon">▶️</span>
+              <span>YouTube Music</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.audiomack ? `
+            <a href="${release.links.audiomack}" target="_blank" class="preview-btn" style="background:#ffa200;">
+              <span class="icon">🔊</span>
+              <span>Audiomack</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.boomplay ? `
+            <a href="${release.links.boomplay}" target="_blank" class="preview-btn" style="background:#e91e63;">
+              <span class="icon">💥</span>
+              <span>Boomplay</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.deezer ? `
+            <a href="${release.links.deezer}" target="_blank" class="preview-btn" style="background:#a238ff;">
+              <span class="icon">💜</span>
+              <span>Deezer</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.soundcloud ? `
+            <a href="${release.links.soundcloud}" target="_blank" class="preview-btn" style="background:#ff5500;">
+              <span class="icon">☁️</span>
+              <span>SoundCloud</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.amazon ? `
+            <a href="${release.links.amazon}" target="_blank" class="preview-btn" style="background:#00a8e1;">
+              <span class="icon">📦</span>
+              <span>Amazon Music</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+          ${release.links.tidal ? `
+            <a href="${release.links.tidal}" target="_blank" class="preview-btn" style="background:#000;">
+              <span class="icon">🌊</span>
+              <span>TIDAL</span>
+              <span class="arrow">→</span>
+            </a>
+          ` : ''}
+        </div>
+        
+        ${profile.social ? `
+          <div class="preview-social">
+            ${profile.social.instagram ? `<a href="${profile.social.instagram}" target="_blank" class="preview-social-link">📸</a>` : ''}
+            ${profile.social.tiktok ? `<a href="${profile.social.tiktok}" target="_blank" class="preview-social-link">🎵</a>` : ''}
+            ${profile.social.twitter ? `<a href="${profile.social.twitter}" target="_blank" class="preview-social-link">🐦</a>` : ''}
+            ${profile.social.facebook ? `<a href="${profile.social.facebook}" target="_blank" class="preview-social-link">📘</a>` : ''}
+            ${profile.social.youtube ? `<a href="${profile.social.youtube}" target="_blank" class="preview-social-link">▶️</a>` : ''}
+            ${profile.social.website ? `<a href="${profile.social.website}" target="_blank" class="preview-social-link">🌐</a>` : ''}
+          </div>
+        ` : ''}
+        
+        <div class="preview-footer">
+          <p>Powered by Holy Link</p>
+        </div>
+      `;
+      
+      showScreen('previewScreen');
+      
+      // Track view
+      currentUser.stats.views = (currentUser.stats.views || 0) + 1;
+      saveUser();
+    }
+    
+    // ==================== SHARING ====================
+    function shareLink() {
+      const url = `${window.location.origin}${window.location.pathname}?u=${currentUser.id}`;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: `${currentUser.profile.artistName} - ${currentUser.releases[0]?.title || 'Music'}`,
+          text: 'Check out my new music!',
+          url: url
+        }).then(() => {
+          currentUser.stats.shares = (currentUser.stats.shares || 0) + 1;
+          saveUser();
+          renderDashboard();
+        }).catch(console.log);
+      } else {
+        copyShareLink();
+      }
+    }
+    
+    function copyShareLink() {
+      const url = document.getElementById('shareLinkUrl').value;
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('Link copied to clipboard!');
+          currentUser.stats.shares = (currentUser.stats.shares || 0) + 1;
+          saveUser();
+        });
+      } else {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = url;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast('Link copied!');
+      }
+    }
+    
+    // ==================== THEME ====================
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const newTheme = current === 'light' ? 'dark' : 'light';
+      setTheme(newTheme);
+    }
+    
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('holylink_theme', theme);
+    }
+    
+    // ==================== PUBLIC PAGE LOADER ====================
+    function checkPublicPage() {
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get('u');
+      
+      if (userId) {
+        // Load public page (in production, fetch from backend)
+        const savedUser = localStorage.getItem('holylink_user');
+        if (savedUser) {
+          const user = JSON.parse(savedUser);
+          if (user.id === userId) {
+            currentUser = user;
+            previewLink();
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    
+    // ==================== START APP ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!checkPublicPage()) {
+        init();
+      }
+    });
   </script>
 </body>
 </html>
