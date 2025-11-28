@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Stream 'Mi Daddy God Owns It All' on all platforms - Spotify, Apple Music, YouTube, Audiomack, Boomplay and more">
+  <meta name="keywords" content="Mi Daddy God Owns It All, gospel music, streaming, Spotify, Apple Music">
+  <meta name="author" content="Holy Link">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="music.song">
+  <meta property="og:title" content="Mi Daddy God Owns It All">
+  <meta property="og:description" content="Stream on all platforms - Spotify, Apple Music, YouTube & more">
+  <meta property="og:image" content="icon-512.png">
+  <meta property="og:url" content="https://holylink.vercel.app">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mi Daddy God Owns It All">
+  <meta name="twitter:description" content="Stream on all platforms">
+  
+  <!-- PWA Configuration -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Holy Link">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon-192.png">
+  
+  <title>Holy Link • Mi Daddy God Owns It All</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==================== CSS RESET ==================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+    
+    /* ==================== CSS VARIABLES ==================== */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --accent-color: #1db954;
+      --accent-hover: #1ed760;
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
+      --text-muted: rgba(255, 255, 255, 0.6);
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.4);
+      --border-radius-sm: 12px;
+      --border-radius-md: 20px;
+      --border-radius-lg: 30px;
+      --border-radius-full: 50px;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    [data-theme="light"] {
+      --primary-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --text-primary: #1a1a2e;
+      --text-secondary: rgba(26, 26, 46, 0.8);
+      --text-muted: rgba(26, 26, 46, 0.6);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ==================== BASE STYLES ==================== */
+    body {
+      font-family: var(--font-family);
+      background: var(--primary-gradient);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-attachment: fixed;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    
+    input {
+      font-family: inherit;
+      outline: none;
+      border: none;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* ==================== LAYOUT ==================== */
+    .app-container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-bottom: 100px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* ==================== PARTICLES BACKGROUND ==================== */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    /* ==================== THEME TOGGLE ==================== */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: var(--transition-normal);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+    
+    /* ==================== INSTALL BANNER ==================== */
+    .install-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: 16px 20px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      z-index: 1000;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .install-banner.show {
+      display: flex;
+    }
+    
+    .install-banner p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .install-banner button {
+      padding: 10px 20px;
+      background: white;
+      color: #667eea;
+      border-radius: var(--border-radius-full);
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    
+    .install-banner .close-btn {
+      background: transparent;
+      color: white;
+      padding: 5px;
+      font-size: 20px;
+    }
+    
+    /* ==================== HEADER ==================== */
+    .header {
+      text-align: center;
+      padding: 40px 0 30px;
+    }
+    
+    .avatar-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--shadow-lg);
+      object-fit: cover;
+      background: var(--card-bg);
+    }
+    
+    .verified-badge {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 36px;
+      height: 36px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      border: 3px solid white;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .artist-name {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #fff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    [data-theme="light"] .artist-name {
+      background: linear-gradient(90deg, #1a1a2e, #333);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .artist-bio {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    /* ==================== SONG CARD ==================== */
+    .song-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-md);
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    
+    .song-cover {
+      width: 200px;
+      height: 200px;
+      border-radius: var(--border-radius-md);
+      margin: 0 auto 20px;
+      box-shadow: var(--shadow-md);
+      object-fit: cover;
+      background: var(--card-bg);
+    }
+    
+    .song-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .song-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    
+    /* ==================== STREAMING BUTTONS ==================== */
+    .streaming-section {
+      margin: 30px 0;
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+    }
+    
+    .streaming-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .stream-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      border-radius: var(--border-radius-full);
+      font-weight: 600;
+      font-size: 16px;
+      color: white;
+      transition: var(--transition-normal);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stream-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .stream-btn:hover::before {
+      left: 100%;
+    }
+    
+    .stream-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .stream-btn:active {
+      transform: translateY(0);
+    }
+    
+    .stream-btn .icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .stream-btn .icon img,
+    .stream-btn .icon svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .stream-btn .label {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .stream-btn .arrow {
+      opacity: 0.7;
+      font-size: 18px;
+    }
+    
+    /* Platform Colors */
+    .btn-spotify { background: linear-gradient(135deg, #1db954, #1ed760); }
+    .btn-apple { background: linear-gradient(135deg, #fc3c44, #ff6b6b); }
+    .btn-youtube { background: linear-gradient(135deg, #ff0000, #ff4444); }
+    .btn-amazon { background: linear-gradient(135deg, #00a8e1, #00d4ff); }
+    .btn-deezer { background: linear-gradient(135deg, #a238ff, #c77dff); }
+    .btn-tidal { background: linear-gradient(135deg, #000000, #333333); border: 1px solid rgba(255,255,255,0.2); }
+    .btn-soundcloud { background: linear-gradient(135deg, #ff5500, #ff8800); }
+    .btn-audiomack { background: linear-gradient(135deg, #ffa200, #ffb833); }
+    .btn-boomplay { background: linear-gradient(135deg, #e91e63, #ff4081); }
+    .btn-pandora { background: linear-gradient(135deg, #005483, #0088cc); }
+    .btn-napster { background: linear-gradient(135deg, #000000, #1a1a1a); border: 1px solid rgba(255,255,255,0.2); }
+    .btn-anghami { background: linear-gradient(135deg, #7b2d8e, #9c27b0); }
+    .btn-jiosaavn { background: linear-gradient(135deg, #2bc5b4, #00e5cc); }
+    .btn-gaana { background: linear-gradient(135deg, #e72c30, #ff5252); }
+    .btn-yandex { background: linear-gradient(135deg, #ffcc00, #ffe066); color: #000; }
+    .btn-vk { background: linear-gradient(135deg, #4a76a8, #6a9bc9); }
+    .btn-tiktok { background: linear-gradient(135deg, #000000, #25f4ee); border: 1px solid #fe2c55; }
+    .btn-shazam { background: linear-gradient(135deg, #0088ff, #00aaff); }
+    .btn-genius { background: linear-gradient(135deg, #ffff64, #fff700); color: #000; }
+    
+    /* Pre-save Button */
+    .btn-presave {
+      background: linear-gradient(135deg, #f81e70, #ff6b6b);
+      animation: pulse-glow 2s infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(248, 30, 112, 0.7); }
+      50% { box-shadow: 0 0 0 15px rgba(248, 30, 112, 0); }
+    }
+    
+    /* ==================== STATS SECTION ==================== */
+    .stats-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-md);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .stat-item {
+      padding: 10px;
+    }
+    
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent-color);
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* ==================== COUNTRIES SECTION ==================== */
+    .countries-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-md);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .countries-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .country-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .country-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .country-flag {
+      font-size: 28px;
+    }
+    
+    .country-info {
+      flex: 1;
+    }
+    
+    .country-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .country-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    
+    .country-bar-fill {
+      height: 100%;
+      background: var(--accent-color);
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+    
+    .country-percent {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+    
+    /* ==================== UNLOCK SECTION ==================== */
+    .unlock-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-md);
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    
+    .unlock-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    
+    .unlock-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .unlock-description {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    
+    .unlock-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .unlock-input {
+      width: 100%;
+      padding: 16px 20px;
+      background: white;
+      border-radius: var(--border-radius-full);
+      font-size: 16px;
+      color: #333;
+      text-align: center;
+    }
+    
+    .unlock-input::placeholder {
+      color: #999;
+    }
+    
+    .unlock-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #f81e70, #ff6b6b);
+      color: white;
+      border-radius: var(--border-radius-full);
+      font-size: 16px;
+      font-weight: 700;
+      transition: var(--transition-normal);
+    }
+    
+    .unlock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* ==================== COMMENTS SECTION ==================== */
+    .comments-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-md);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .comments-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: var(--border-radius-sm);
+    }
+    
+    .comment-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    .comment-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .comment-location {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    
+    .comment-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .add-comment {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .comment-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: white;
+      border-radius: var(--border-radius-full);
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .comment-submit {
+      padding: 14px 24px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: var(--border-radius-full);
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition-normal);
+    }
+    
+    .comment-submit:hover {
+      background: var(--accent-hover);
+    }
+    
+    /* ==================== SOCIAL LINKS ==================== */
+    .social-section {
+      margin: 30px 0;
+      text-align: center;
+    }
+    
+    .social-title {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: var(--transition-normal);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    /* ==================== SHARE SECTION ==================== */
+    .share-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-md);
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    
+    .share-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .share-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-full);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition-normal);
+    }
+    
+    .share-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    /* ==================== QR CODE SECTION ==================== */
+    .qr-section {
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .qr-container {
+      display: inline-block;
+      background: white;
+      padding: 20px;
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .qr-container canvas {
+      display: block;
+    }
+    
+    .qr-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 15px;
+    }
+    
+    /* ==================== FOOTER ==================== */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, var(--accent-color), #48dbfb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer a {
+      color: var(--accent-color);
+    }
+    
+    /* ==================== TOAST NOTIFICATION ==================== */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #333;
+      color: white;
+      padding: 16px 32px;
+      border-radius: var(--border-radius-full);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    /* ==================== MODAL ==================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 20px;
+    }
+    
+    .modal-overlay.show {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: var(--border-radius-md);
+      padding: 30px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      color: #333;
+    }
+    
+    .modal-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .modal-text {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+    
+    .modal-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: var(--border-radius-full);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    
+    /* ==================== LOADING SPINNER ==================== */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 480px) {
+      .app-container {
+        padding: 15px;
+      }
+      
+      .artist-name {
+        font-size: 26px;
+      }
+      
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .stats-grid {
+        gap: 10px;
+      }
+      
+      .stat-value {
+        font-size: 22px;
+      }
+      
+      .stream-btn {
+        padding: 16px 20px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <canvas id="particles-canvas"></canvas>
+  
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span id="themeIcon">🌙</span>
+  </button>
+  
+  <!-- Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <p>📱 Add Holy Link to Home Screen</p>
+    <button id="installBtn">Install</button>
+    <button class="close-btn" id="closeBanner">×</button>
+  </div>
+  
+  <!-- Main App Container -->
+  <div class="app-container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="avatar-container">
+        <img 
+          src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop" 
+          alt="Artist Photo" 
+          class="avatar"
+          id="artistAvatar"
+        >
+        <div class="verified-badge">✓</div>
+      </div>
+      <h1 class="artist-name" id="artistName">God's Child</h1>
+      <p class="artist-bio" id="artistBio">Gospel Artist • Worship Leader • Songwriter</p>
+    </header>
+    
+    <!-- Song Card -->
+    <section class="song-card">
+      <img 
+        src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop" 
+        alt="Album Cover" 
+        class="song-cover"
+        id="songCover"
+      >
+      <h2 class="song-title" id="songTitle">Mi Daddy God Owns It All</h2>
+      <p class="song-meta" id="songMeta">Single • 2025 • Gospel</p>
+    </section>
+    
+    <!-- Streaming Buttons -->
+    <section class="streaming-section">
+      <h3 class="section-title">Stream Now</h3>
+      <div class="streaming-buttons" id="streamingButtons">
+        <!-- Buttons will be dynamically inserted -->
+      </div>
+    </section>
+    
+    <!-- Pre-Save Section -->
+    <section class="streaming-section">
+      <h3 class="section-title">Upcoming Release</h3>
+      <div class="streaming-buttons">
+        <a href="#" class="stream-btn btn-presave" id="presaveBtn">
+          <span class="icon">⭐</span>
+          <span class="label">Pre-Save & Unlock Exclusive Content</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="totalStreams">250,431</div>
+          <div class="stat-label">Streams</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="totalFans">12.4K</div>
+          <div class="stat-label">Fans</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="totalCountries">45</div>
+          <div class="stat-label">Countries</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Top Countries -->
+    <section class="countries-section">
+      <h3 class="countries-title">🌍 Top Countries</h3>
+      <div class="country-list" id="countryList">
+        <!-- Countries will be dynamically inserted -->
+      </div>
+    </section>
+    
+    <!-- Unlock Content -->
+    <section class="unlock-section">
+      <div class="unlock-icon">🔓</div>
+      <h3 class="unlock-title">Unlock Exclusive Content</h3>
+      <p class="unlock-description">Get behind-the-scenes video, unreleased tracks & more!</p>
+      <form class="unlock-form" id="unlockForm">
+        <input type="email" class="unlock-input" id="unlockEmail" placeholder="Enter your email" required>
+        <button type="submit" class="unlock-btn">Unlock Now</button>
+      </form>
+    </section>
+    
+    <!-- Fan Comments -->
+    <section class="comments-section">
+      <h3 class="comments-title">💬 Fan Love</h3>
+      <div class="comments-list" id="commentsList">
+        <!-- Comments will be dynamically inserted -->
+      </div>
+      <div class="add-comment">
+        <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment...">
+        <button class="comment-submit" id="commentSubmit">Send</button>
+      </div>
+    </section>
+    
+    <!-- Social Links -->
+    <section class="social-section">
+      <p class="social-title">Follow the Journey</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram">📸</a>
+        <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+      </div>
+    </section>
+    
+    <!-- Share Section -->
+    <section class="share-section">
+      <h3 class="share-title">Share This Song</h3>
+      <div class="share-buttons">
+        <button class="share-btn" id="copyLinkBtn">📋 Copy Link</button>
+        <button class="share-btn" id="shareWhatsApp">💬 WhatsApp</button>
+        <button class="share-btn" id="shareTwitter">🐦 Twitter</button>
+        <button class="share-btn" id="shareFacebook">📘 Facebook</button>
+      </div>
+    </section>
+    
+    <!-- QR Code -->
+    <section class="qr-section">
+      <div class="qr-container" id="qrContainer"></div>
+      <p class="qr-label">Scan to share</p>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">Holy Link</div>
+      <p>Made with ❤️ and the Holy Spirit</p>
+      <p style="margin-top: 10px;">© 2025 All Rights Reserved</p>
+    </footer>
+    
+  </div>
+  
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+  
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-content">
+      <div class="modal-icon">🎉</div>
+      <h3 class="modal-title">You're In!</h3>
+      <p class="modal-text">Check your email for exclusive content. Welcome to the family!</p>
+      <button class="modal-btn" id="closeModal">Let's Go!</button>
+    </div>
+  </div>
+  
+  <!-- QR Code Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+  <script>
+    // ==================== CONFIGURATION ====================
+    const CONFIG = {
+      artistName: "God's Child",
+      artistBio: "Gospel Artist • Worship Leader • Songwriter",
+      songTitle: "Mi Daddy God Owns It All",
+      songMeta: "Single • 2025 • Gospel",
+      artistImage: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
+      songCover: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop",
+      baseStats: {
+        streams: 250431,
+        fans: 12400,
+        countries: 45
+      }
+    };
+    
+    // Streaming Platforms
+    const PLATFORMS = [
+      { id: 'spotify', name: 'Spotify', class: 'btn-spotify', icon: '🎵', url: 'https://open.spotify.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'apple', name: 'Apple Music', class: 'btn-apple', icon: '🍎', url: 'https://music.apple.com/search?term=Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'youtube', name: 'YouTube Music', class: 'btn-youtube', icon: '▶️', url: 'https://music.youtube.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'amazon', name: 'Amazon Music', class: 'btn-amazon', icon: '📦', url: 'https://music.amazon.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'deezer', name: 'Deezer', class: 'btn-deezer', icon: '💜', url: 'https://www.deezer.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'tidal', name: 'TIDAL', class: 'btn-tidal', icon: '🌊', url: 'https://listen.tidal.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'soundcloud', name: 'SoundCloud', class: 'btn-soundcloud', icon: '☁️', url: 'https://soundcloud.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'audiomack', name: 'Audiomack', class: 'btn-audiomack', icon: '🔊', url: 'https://audiomack.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'boomplay', name: 'Boomplay', class: 'btn-boomplay', icon: '💥', url: 'https://www.boomplay.com/search/default/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'pandora', name: 'Pandora', class: 'btn-pandora', icon: '📻', url: 'https://www.pandora.com/search/Mi%20Daddy%20God%20Owns%20It%20All/all' },
+      { id: 'anghami', name: 'Anghami', class: 'btn-anghami', icon: '🎧', url: 'https://play.anghami.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'jiosaavn', name: 'JioSaavn', class: 'btn-jiosaavn', icon: '🇮🇳', url: 'https://www.jiosaavn.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'shazam', name: 'Shazam', class: 'btn-shazam', icon: '🔍', url: 'https://www.shazam.com/search/Mi%20Daddy%20God%20Owns%20It%20All' },
+      { id: 'genius', name: 'Genius Lyrics', class: 'btn-genius', icon: '📝', url: 'https://genius.com/search?q=Mi%20Daddy%20God%20Owns%20It%20All' },
+    ];
+    
+    // Top Countries Data
+    const COUNTRIES = [
+      { flag: '🇳🇬', name: 'Nigeria', percent: 85 },
+      { flag: '🇺🇸', name: 'United States', percent: 62 },
+      { flag: '🇬🇭', name: 'Ghana', percent: 48 },
+      { flag: '🇬🇧', name: 'United Kingdom', percent: 35 },
+      { flag: '🇿🇦', name: 'South Africa', percent: 28 },
+    ];
+    
+    // Sample Comments
+    const COMMENTS = [
+      { name: 'Sarah', location: 'Lagos, Nigeria', text: 'This song is on repeat! God is good! 🙌', initial: 'S' },
+      { name: 'Michael', location: 'Houston, USA', text: 'My Daddy God truly owns it all! Amen! 🔥', initial: 'M' },
+      { name: 'Chioma', location: 'Accra, Ghana', text: 'This blessed my soul today. Thank you! ❤️', initial: 'C' },
+      { name: 'David', location: 'London, UK', text: 'Playing this for my whole family!', initial: 'D' },
+    ];
+    
+    // ==================== STATE ====================
+    let stats = {
+      clicks: parseInt(localStorage.getItem('holylink_clicks') || '0'),
+      shares: parseInt(localStorage.getItem('holylink_shares') || '0'),
+      streams: CONFIG.baseStats.streams
+    };
+    
+    let deferredPrompt = null;
+    
+    // ==================== DOM ELEMENTS ====================
+    const elements = {
+      themeToggle: document.getElementById('themeToggle'),
+      themeIcon: document.getElementById('themeIcon'),
+      installBanner: document.getElementById('installBanner'),
+      installBtn: document.getElementById('installBtn'),
+      closeBanner: document.getElementById('closeBanner'),
+      streamingButtons: document.getElementById('streamingButtons'),
+      countryList: document.getElementById('countryList'),
+      commentsList: document.getElementById('commentsList'),
+      commentInput: document.getElementById('commentInput'),
+      commentSubmit: document.getElementById('commentSubmit'),
+      unlockForm: document.getElementById('unlockForm'),
+      unlockEmail: document.getElementById('unlockEmail'),
+      presaveBtn: document.getElementById('presaveBtn'),
+      copyLinkBtn: document.getElementById('copyLinkBtn'),
+      shareWhatsApp: document.getElementById('shareWhatsApp'),
+      shareTwitter: document.getElementById('shareTwitter'),
+      shareFacebook: document.getElementById('shareFacebook'),
+      qrContainer: document.getElementById('qrContainer'),
+      toast: document.getElementById('toast'),
+      successModal: document.getElementById('successModal'),
+      closeModal: document.getElementById('closeModal'),
+      totalStreams: document.getElementById('totalStreams'),
+      particlesCanvas: document.getElementById('particles-canvas')
+    };
+    
+    // ==================== UTILITY FUNCTIONS ====================
+    function showToast(message) {
+      elements.toast.textContent = message;
+      elements.toast.classList.add('show');
+      setTimeout(() => elements.toast.classList.remove('show'), 3000);
+    }
+    
+    function formatNumber(num) {
+      if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+      } else if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+      }
+      return num.toLocaleString();
+    }
+    
+    function saveStats() {
+      localStorage.setItem('holylink_clicks', stats.clicks);
+      localStorage.setItem('holylink_shares', stats.shares);
+    }
+    
+    // ==================== PARTICLES ANIMATION ====================
+    function initParticles() {
+      const canvas = elements.particlesCanvas;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      
+      function createParticle() {
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25,
+          opacity: Math.random() * 0.5 + 0.2
+        };
+      }
+      
+      function init() {
+        resize();
+        particles = [];
+        for (let i = 0; i < 80; i++) {
+          particles.push(createParticle());
+        }
+      }
+      
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach((p, index) => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          
+          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+          ctx.fill();
+          
+          // Draw connections
+          particles.forEach((p2, index2) => {
+            if (index !== index2) {
+              const dx = p.x - p2.x;
+              const dy = p.y - p2.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              
+              if (distance < 120) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 120)})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          });
+        });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      window.addEventListener('resize', resize);
+      init();
+      animate();
+    }
+    
+    // ==================== RENDER FUNCTIONS ====================
+    function renderStreamingButtons() {
+      elements.streamingButtons.innerHTML = PLATFORMS.map(platform => `
+        <a href="${platform.url}" target="_blank" rel="noopener noreferrer" class="stream-btn ${platform.class}" data-platform="${platform.id}">
+          <span class="icon">${platform.icon}</span>
+          <span class="label">${platform.name}</span>
+          <span class="arrow">→</span>
+        </a>
+      `).join('');
+      
+      // Add click tracking
+      elements.streamingButtons.querySelectorAll('.stream-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          stats.clicks++;
+          saveStats();
+        });
+      });
+    }
+    
+    function renderCountries() {
+      elements.countryList.innerHTML = COUNTRIES.map(country => `
+        <div class="country-item">
+          <span class="country-flag">${country.flag}</span>
+          <div class="country-info">
+            <div class="country-name">${country.name}</div>
+            <div class="country-bar">
+              <div class="country-bar-fill" style="width: ${country.percent}%"></div>
+            </div>
+          </div>
+          <span class="country-percent">${country.percent}%</span>
+        </div>
+      `).join('');
+    }
+    
+    function renderComments() {
+      const storedComments = JSON.parse(localStorage.getItem('holylink_comments') || '[]');
+      const allComments = [...COMMENTS, ...storedComments];
+      
+      elements.commentsList.innerHTML = allComments.map(comment => `
+        <div class="comment-item">
+          <div class="comment-header">
+            <div class="comment-avatar">${comment.initial}</div>
+            <div>
+              <div class="comment-name">${comment.name}</div>
+              <div class="comment-location">${comment.location}</div>
+            </div>
+          </div>
+          <p class="comment-text">${comment.text}</p>
+        </div>
+      `).join('');
+    }
+    
+    function generateQRCode() {
+      elements.qrContainer.innerHTML = '';
+      new QRCode(elements.qrContainer, {
+        text: window.location.href,
+        width: 150,
+        height: 150,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
+    
+    // ==================== STATS COUNTER ====================
+    function startStatsCounter() {
+      setInterval(() => {
+        stats.streams += Math.floor(Math.random() * 5) + 1;
+        elements.totalStreams.textContent = formatNumber(stats.streams);
+      }, 5000);
+    }
+    
+    // ==================== THEME TOGGLE ====================
+    function initTheme() {
+      const savedTheme = localStorage.getItem('holylink_theme');
+      if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        elements.themeIcon.textContent = '☀️';
+      }
+    }
+    
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('holylink_theme', newTheme);
+      elements.themeIcon.textContent = newTheme === 'light' ? '☀️' : '🌙';
+    }
+    
+    // ==================== PWA INSTALL ====================
+    function initPWAInstall() {
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install banner after 5 seconds
+        setTimeout(() => {
+          if (!localStorage.getItem('holylink_install_dismissed')) {
+            elements.installBanner.classList.add('show');
+          }
+        }, 5000);
+      });
+      
+      elements.installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const result = await deferredPrompt.userChoice;
+          if (result.outcome === 'accepted') {
+            showToast('✓ App installed successfully!');
+          }
+          deferredPrompt = null;
+          elements.installBanner.classList.remove('show');
+        }
+      });
+      
+      elements.closeBanner.addEventListener('click', () => {
+        elements.installBanner.classList.remove('show');
+        localStorage.setItem('holylink_install_dismissed', 'true');
+      });
+    }
+    
+    // ==================== SHARE FUNCTIONS ====================
+    function copyLink() {
+      const url = window.location.href;
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url)
+          .then(() => showToast('✓ Link copied to clipboard!'))
+          .catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+      
+      stats.shares++;
+      saveStats();
+    }
+    
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      showToast('✓ Link copied!');
+    }
+    
+    function shareWhatsApp() {
+      const text = `Check out "${CONFIG.songTitle}" by ${CONFIG.artistName}! 🎵\n${window.location.href}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+      stats.shares++;
+      saveStats();
+    }
+    
+    function shareTwitter() {
+      const text = `Check out "${CONFIG.songTitle}" by ${CONFIG.artistName}! 🎵`;
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+      stats.shares++;
+      saveStats();
+    }
+    
+    function shareFacebook() {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
+      stats.shares++;
+      saveStats();
+    }
+    
+    // ==================== FORM HANDLERS ====================
+    function handleUnlockSubmit(e) {
+      e.preventDefault();
+      const email = elements.unlockEmail.value.trim();
+      
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        showToast('Please enter a valid email');
+        return;
+      }
+      
+      // Store email (in production, send to your backend)
+      const emails = JSON.parse(localStorage.getItem('holylink_emails') || '[]');
+      emails.push({ email, date: new Date().toISOString() });
+      localStorage.setItem('holylink_emails', JSON.stringify(emails));
+      
+      // Show success modal
+      elements.successModal.classList.add('show');
+      elements.unlockEmail.value = '';
+    }
+    
+    function handlePresave(e) {
+      e.preventDefault();
+      showToast('⭐ Pre-saved! You\'ll be notified on release day!');
+      stats.clicks++;
+      saveStats();
+    }
+    
+    function handleAddComment() {
+      const text = elements.commentInput.value.trim();
+      
+      if (!text) {
+        showToast('Please enter a comment');
+        return;
+      }
+      
+      const newComment = {
+        name: 'You',
+        location: 'Just now',
+        text: text,
+        initial: 'Y'
+      };
+      
+      const storedComments = JSON.parse(localStorage.getItem('holylink_comments') || '[]');
+      storedComments.unshift(newComment);
+      localStorage.setItem('holylink_comments', JSON.stringify(storedComments));
+      
+      elements.commentInput.value = '';
+      renderComments();
+      showToast('✓ Comment added!');
+    }
+    
+    // ==================== EVENT LISTENERS ====================
+    function initEventListeners() {
+      elements.themeToggle.addEventListener('click', toggleTheme);
+      elements.unlockForm.addEventListener('submit', handleUnlockSubmit);
+      elements.presaveBtn.addEventListener('click', handlePresave);
+      elements.copyLinkBtn.addEventListener('click', copyLink);
+      elements.shareWhatsApp.addEventListener('click', shareWhatsApp);
+      elements.shareTwitter.addEventListener('click', shareTwitter);
+      elements.shareFacebook.addEventListener('click', shareFacebook);
+      elements.commentSubmit.addEventListener('click', handleAddComment);
+      elements.closeModal.addEventListener('click', () => {
+        elements.successModal.classList.remove('show');
+      });
+      
+      // Enter key for comment
+      elements.commentInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          handleAddComment();
+        }
+      });
+    }
+    
+    // ==================== SERVICE WORKER ====================
+    function registerServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration.scope);
+          })
+          .catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+      }
+    }
+    
+    // ==================== INITIALIZE APP ====================
+    function init() {
+      initTheme();
+      initParticles();
+      renderStreamingButtons();
+      renderCountries();
+      renderComments();
+      generateQRCode();
+      startStatsCounter();
+      initPWAInstall();
+      initEventListeners();
+      registerServiceWorker();
+      
+      console.log('🎵 Holy Link initialized successfully!');
+    }
+    
+    // Start app when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>
