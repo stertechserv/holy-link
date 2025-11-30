@@ -214,6 +214,31 @@
     .btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
+      box-shadow: none !important;
+    }
+    
+    .btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+    
+    .btn-loading {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-loading::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
     
     /* ==================== FORMS ==================== */
@@ -241,13 +266,34 @@
       transition: var(--transition);
     }
     
+    .form-input:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+    }
+    
     .form-input:focus {
       outline: none;
       border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+    }
+    
+    .form-input.error {
+      border-color: var(--danger);
+      box-shadow: 0 4px 15px rgba(255, 71, 87, 0.1);
     }
     
     .form-input::placeholder {
       color: var(--text-muted);
+    }
+    
+    .form-input[type="number"]::-webkit-outer-spin-button,
+    .form-input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    .form-input[type="number"] {
+      appearance: textfield;
     }
     
     .form-textarea {
@@ -265,6 +311,21 @@
       color: var(--danger);
       font-size: 12px;
       margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      animation: slideDown 0.2s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     /* ==================== CARDS ==================== */
@@ -276,12 +337,37 @@
       border-radius: var(--radius-lg);
       padding: 24px;
       margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.1);
     }
     
     .card-title {
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    
+    .form-input[type="date"],
+    .form-input[type="time"],
+    .form-input select {
+      cursor: pointer;
+    }
+    
+    .form-input select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      padding-right: 40px;
+    }
+    
+    [data-theme="light"] .form-input select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a1a2e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     }
     
     /* ==================== AUTH SCREENS ==================== */
@@ -452,8 +538,14 @@
       transition: var(--transition);
     }
     
+    .platform-input:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+    }
+    
     .platform-input:focus-within {
       border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
     }
     
     .platform-icon {
@@ -536,6 +628,11 @@
     
     .icon-btn:hover {
       background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    
+    .icon-btn:active {
+      transform: scale(0.95);
     }
     
     /* ==================== STATS GRID ==================== */
@@ -704,6 +801,11 @@
     
     .preview-btn:hover {
       transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .preview-btn:active {
+      transform: translateX(3px);
     }
     
     .preview-btn .icon {
@@ -778,6 +880,18 @@
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
+      animation: slideUp 0.3s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
     
     .modal-header {
@@ -910,6 +1024,43 @@
       
       .stat-value {
         font-size: 20px;
+      }
+    }
+    
+    /* ==================== ACCESSIBILITY ==================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    
+    @media (prefers-contrast: more) {
+      :root {
+        --border: rgba(255, 255, 255, 0.3);
+      }
+      
+      .btn-secondary {
+        border-width: 3px;
+      }
+    }
+    
+    /* Focus visible for keyboard navigation */
+    .btn:focus-visible,
+    .form-input:focus-visible,
+    .icon-btn:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    @media (pointer: coarse) {
+      .btn,
+      .icon-btn,
+      .nav-item {
+        min-height: 48px;
+        min-width: 48px;
       }
     }
   </style>
@@ -1314,18 +1465,74 @@
     let currentUser = null;
     let currentWizardStep = 1;
     const totalWizardSteps = 4;
+    let isLoading = false;
+    
+    // ==================== INPUT VALIDATION ====================
+    function addInputValidation() {
+      // Email validation on blur
+      const emailInputs = document.querySelectorAll('input[type="email"]');
+      emailInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          if (this.value && !isValidEmail(this.value)) {
+            this.classList.add('error');
+          } else {
+            this.classList.remove('error');
+          }
+        });
+        
+        input.addEventListener('input', function() {
+          if (this.classList.contains('error') && isValidEmail(this.value)) {
+            this.classList.remove('error');
+          }
+        });
+      });
+      
+      // URL validation
+      const urlInputs = document.querySelectorAll('input[type="url"]');
+      urlInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          if (this.value && !isValidUrl(this.value)) {
+            this.classList.add('error');
+          } else {
+            this.classList.remove('error');
+          }
+        });
+        
+        input.addEventListener('input', function() {
+          if (this.classList.contains('error') && isValidUrl(this.value)) {
+            this.classList.remove('error');
+          }
+        });
+      });
+    }
+    
+    function isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
     
     // ==================== INITIALIZATION ====================
     function init() {
       // Check for existing user
       const savedUser = localStorage.getItem('holylink_user');
       if (savedUser) {
-        currentUser = JSON.parse(savedUser);
-        if (currentUser.setupComplete) {
-          showScreen('dashboardScreen');
-          renderDashboard();
-        } else {
-          showScreen('wizardScreen');
+        try {
+          currentUser = JSON.parse(savedUser);
+          if (currentUser.setupComplete) {
+            showScreen('dashboardScreen');
+            renderDashboard();
+          } else {
+            showScreen('wizardScreen');
+            updateWizardUI();
+          }
+        } catch (e) {
+          console.error('Failed to load user:', e);
+          localStorage.removeItem('holylink_user');
+          showScreen('welcomeScreen');
         }
       } else {
         showScreen('welcomeScreen');
@@ -1337,9 +1544,14 @@
         document.documentElement.setAttribute('data-theme', savedTheme);
       }
       
+      // Add input validation
+      addInputValidation();
+      
       // Register service worker
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(console.log);
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed:', err);
+        });
       }
     }
     
@@ -1370,72 +1582,161 @@
     function handleSignup(e) {
       e.preventDefault();
       
-      const name = document.getElementById('signupName').value.trim();
-      const email = document.getElementById('signupEmail').value.trim();
-      const password = document.getElementById('signupPassword').value;
+      const nameInput = document.getElementById('signupName');
+      const emailInput = document.getElementById('signupEmail');
+      const passwordInput = document.getElementById('signupPassword');
       
-      if (!name || !email || !password) {
-        showToast('Please fill all fields', 'error');
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      
+      // Clear previous errors
+      [nameInput, emailInput, passwordInput].forEach(el => el.classList.remove('error'));
+      
+      // Validate
+      let hasError = false;
+      
+      if (!name) {
+        nameInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (!email || !isValidEmail(email)) {
+        emailInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (!password || password.length < 6) {
+        passwordInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (hasError) {
+        showToast('Please fix the errors above', 'error');
         return;
       }
       
-      // Create user
-      currentUser = {
-        id: Date.now().toString(),
-        name,
-        email,
-        password,
-        createdAt: new Date().toISOString(),
-        setupComplete: false,
-        profile: {},
-        releases: [],
-        stats: { clicks: 0, views: 0, shares: 0 }
-      };
+      // Simulate network delay
+      setLoading(true, e.target.querySelector('button[type="submit"]'));
       
-      saveUser();
-      showToast('Account created successfully!');
-      showScreen('wizardScreen');
+      setTimeout(() => {
+        // Create user
+        currentUser = {
+          id: Date.now().toString(),
+          name,
+          email,
+          password,
+          createdAt: new Date().toISOString(),
+          setupComplete: false,
+          profile: {},
+          releases: [],
+          stats: { clicks: 0, views: 0, shares: 0 }
+        };
+        
+        saveUser();
+        setLoading(false, e.target.querySelector('button[type="submit"]'));
+        showToast('Account created successfully! 🎉');
+        
+        // Reset form
+        document.getElementById('signupForm').reset();
+        
+        // Delay navigation slightly for better UX
+        setTimeout(() => {
+          showScreen('wizardScreen');
+          updateWizardUI();
+        }, 200);
+      }, 600);
     }
     
     function handleLogin(e) {
       e.preventDefault();
       
-      const email = document.getElementById('loginEmail').value.trim();
-      const password = document.getElementById('loginPassword').value;
+      const emailInput = document.getElementById('loginEmail');
+      const passwordInput = document.getElementById('loginPassword');
       
-      const savedUser = localStorage.getItem('holylink_user');
-      if (savedUser) {
-        const user = JSON.parse(savedUser);
-        if (user.email === email && user.password === password) {
-          currentUser = user;
-          showToast('Welcome back!');
-          if (currentUser.setupComplete) {
-            showScreen('dashboardScreen');
-            renderDashboard();
-          } else {
-            showScreen('wizardScreen');
-          }
-          return;
-        }
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      
+      // Clear previous errors
+      [emailInput, passwordInput].forEach(el => el.classList.remove('error'));
+      
+      if (!email || !isValidEmail(email)) {
+        emailInput.classList.add('error');
+        showToast('Please enter a valid email', 'error');
+        return;
       }
       
-      showToast('Invalid email or password', 'error');
+      if (!password) {
+        passwordInput.classList.add('error');
+        showToast('Please enter your password', 'error');
+        return;
+      }
+      
+      setLoading(true, e.target.querySelector('button[type="submit"]'));
+      
+      setTimeout(() => {
+        const savedUser = localStorage.getItem('holylink_user');
+        if (savedUser) {
+          const user = JSON.parse(savedUser);
+          if (user.email === email && user.password === password) {
+            currentUser = user;
+            setLoading(false, e.target.querySelector('button[type="submit"]'));
+            showToast('Welcome back! 👋');
+            document.getElementById('loginForm').reset();
+            
+            setTimeout(() => {
+              if (currentUser.setupComplete) {
+                showScreen('dashboardScreen');
+                renderDashboard();
+              } else {
+                showScreen('wizardScreen');
+                updateWizardUI();
+              }
+            }, 200);
+            return;
+          }
+        }
+        
+        setLoading(false, e.target.querySelector('button[type="submit"]'));
+        emailInput.classList.add('error');
+        passwordInput.classList.add('error');
+        showToast('Invalid email or password', 'error');
+      }, 600);
+    }
+    
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    function setLoading(loading, button) {
+      isLoading = loading;
+      if (button) {
+        button.disabled = loading;
+        if (loading) {
+          button.dataset.originalText = button.textContent;
+          button.innerHTML = '<span class="btn-loading"></span>';
+        } else {
+          button.textContent = button.dataset.originalText || 'Submit';
+        }
+      }
     }
     
     function logout() {
-      currentUser = null;
-      hideModal('settingsModal');
-      showScreen('welcomeScreen');
-      showToast('Signed out successfully');
+      if (confirm('Are you sure you want to sign out?')) {
+        currentUser = null;
+        hideModal('settingsModal');
+        showScreen('welcomeScreen');
+        showToast('Signed out successfully');
+      }
     }
     
     function resetAccount() {
-      if (confirm('Are you sure? This will delete all your data.')) {
+      if (confirm('⚠️ This will permanently delete all your data and releases. This cannot be undone. Continue?')) {
         localStorage.removeItem('holylink_user');
         currentUser = null;
         hideModal('settingsModal');
         showScreen('welcomeScreen');
-        showToast('Account deleted');
+        showToast('Account deleted permanently');
       }
     }
     
@@ -1445,6 +1746,13 @@
     
     // ==================== WIZARD ====================
     function nextWizardStep() {
+      // Validate current step before proceeding
+      const isValid = validateWizardStep(currentWizardStep);
+      if (!isValid) {
+        showToast('Please fill in all required fields', 'error');
+        return;
+      }
+      
       // Save current step data
       if (currentWizardStep === 1) {
         currentUser.profile = {
@@ -1454,20 +1762,10 @@
           genre: document.getElementById('artistGenre').value.trim(),
           image: document.getElementById('artistImagePreview').src || ''
         };
-        
-        if (!currentUser.profile.artistName) {
-          showToast('Please enter your artist name', 'error');
-          return;
-        }
       }
       
       if (currentWizardStep === 2) {
         const title = document.getElementById('releaseTitle').value.trim();
-        if (!title) {
-          showToast('Please enter a title', 'error');
-          return;
-        }
-        
         currentUser.releases = [{
           id: Date.now().toString(),
           title,
@@ -1497,11 +1795,26 @@
       
       saveUser();
       
-      // Move to next step
+      // Move to next step with animation
       if (currentWizardStep < totalWizardSteps) {
         currentWizardStep++;
         updateWizardUI();
       }
+    }
+    
+    function validateWizardStep(step) {
+      if (step === 1) {
+        const artistName = document.getElementById('artistName').value.trim();
+        return artistName.length > 0;
+      }
+      
+      if (step === 2) {
+        const title = document.getElementById('releaseTitle').value.trim();
+        return title.length > 0;
+      }
+      
+      // Steps 3 and 4 are optional, always valid
+      return true;
     }
     
     function prevWizardStep() {
@@ -1546,8 +1859,12 @@
       saveUser();
       
       showToast('Setup complete! 🎉');
-      showScreen('dashboardScreen');
-      renderDashboard();
+      
+      // Add slight delay for better UX
+      setTimeout(() => {
+        showScreen('dashboardScreen');
+        renderDashboard();
+      }, 300);
     }
     
     // ==================== IMAGE UPLOAD ====================
@@ -1613,51 +1930,64 @@
     function addRelease(e) {
       e.preventDefault();
       
-      const title = document.getElementById('newReleaseTitle').value.trim();
+      const titleInput = document.getElementById('newReleaseTitle');
+      const title = titleInput.value.trim();
+      
       if (!title) {
+        titleInput.classList.add('error');
         showToast('Please enter a title', 'error');
         return;
       }
       
-      const newRelease = {
-        id: Date.now().toString(),
-        title,
-        type: document.getElementById('newReleaseType').value,
-        year: new Date().getFullYear(),
-        cover: '',
-        links: {
-          spotify: document.getElementById('newReleaseSpotify').value.trim(),
-          apple: document.getElementById('newReleaseApple').value.trim(),
-          youtube: document.getElementById('newReleaseYoutube').value.trim()
-        },
-        createdAt: new Date().toISOString()
-      };
+      titleInput.classList.remove('error');
       
-      currentUser.releases.push(newRelease);
-      saveUser();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      setLoading(true, submitBtn);
       
-      hideModal('addReleaseModal');
-      renderDashboard();
-      showToast('Release added!');
-      
-      // Clear form
-      document.getElementById('newReleaseTitle').value = '';
-      document.getElementById('newReleaseSpotify').value = '';
-      document.getElementById('newReleaseApple').value = '';
-      document.getElementById('newReleaseYoutube').value = '';
+      setTimeout(() => {
+        const newRelease = {
+          id: Date.now().toString(),
+          title,
+          type: document.getElementById('newReleaseType').value,
+          year: new Date().getFullYear(),
+          cover: '',
+          links: {
+            spotify: document.getElementById('newReleaseSpotify').value.trim(),
+            apple: document.getElementById('newReleaseApple').value.trim(),
+            youtube: document.getElementById('newReleaseYoutube').value.trim()
+          },
+          createdAt: new Date().toISOString()
+        };
+        
+        currentUser.releases.push(newRelease);
+        saveUser();
+        
+        setLoading(false, submitBtn);
+        hideModal('addReleaseModal');
+        renderDashboard();
+        showToast('Release added successfully! 🎵');
+        
+        // Clear form
+        e.target.reset();
+      }, 500);
     }
     
     function editRelease(id) {
       // TODO: Implement edit functionality
-      showToast('Edit feature coming soon!', 'warning');
+      showToast('✨ Edit feature coming soon!', 'warning');
     }
     
     function showDashboardTab(tab) {
-      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => item.classList.remove('active'));
+      
+      // Find and activate the clicked item
       event.target.closest('.nav-item').classList.add('active');
       
       if (tab === 'analytics') {
-        showToast('Analytics feature coming soon!', 'warning');
+        showToast('📊 Analytics feature coming soon!', 'warning');
+      } else if (tab === 'home') {
+        // Already on home
       }
     }
     
@@ -1672,6 +2002,39 @@
       const profile = currentUser.profile;
       
       const container = document.getElementById('previewContainer');
+      
+      // Build streaming links HTML with fallback colors
+      const streamingLinks = [
+        { key: 'spotify', icon: '🎵', label: 'Spotify', color: '#1db954' },
+        { key: 'apple', icon: '🍎', label: 'Apple Music', color: '#fc3c44' },
+        { key: 'youtube', icon: '▶️', label: 'YouTube Music', color: '#ff0000' },
+        { key: 'audiomack', icon: '🔊', label: 'Audiomack', color: '#ffa200' },
+        { key: 'boomplay', icon: '💥', label: 'Boomplay', color: '#e91e63' },
+        { key: 'deezer', icon: '💜', label: 'Deezer', color: '#a238ff' },
+        { key: 'soundcloud', icon: '☁️', label: 'SoundCloud', color: '#ff5500' },
+        { key: 'amazon', icon: '📦', label: 'Amazon Music', color: '#00a8e1' },
+        { key: 'tidal', icon: '🌊', label: 'TIDAL', color: '#000' }
+      ].filter(platform => release.links[platform.key])
+        .map(platform => `
+          <a href="${release.links[platform.key]}" target="_blank" rel="noopener noreferrer" class="preview-btn" style="background:${platform.color};" title="${platform.label}">
+            <span class="icon">${platform.icon}</span>
+            <span>${platform.label}</span>
+            <span class="arrow">→</span>
+          </a>
+        `).join('');
+      
+      // Build social links HTML
+      const socialLinks = profile.social ? [
+        { url: profile.social.instagram, icon: '📸', label: 'Instagram' },
+        { url: profile.social.tiktok, icon: '🎵', label: 'TikTok' },
+        { url: profile.social.twitter, icon: '🐦', label: 'Twitter' },
+        { url: profile.social.facebook, icon: '📘', label: 'Facebook' },
+        { url: profile.social.youtube, icon: '▶️', label: 'YouTube' },
+        { url: profile.social.website, icon: '🌐', label: 'Website' }
+      ].filter(link => link.url)
+        .map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="preview-social-link" title="${link.label}">${link.icon}</a>`)
+        .join('') : '';
+      
       container.innerHTML = `
         <div class="preview-header">
           <img src="${profile.image || 'https://via.placeholder.com/120x120?text=🎵'}" alt="${profile.artistName}" class="preview-avatar">
@@ -1680,90 +2043,19 @@
         </div>
         
         <div class="preview-song">
-          <img src="${release.cover || 'https://via.placeholder.com/180x180?text=🎵'}" alt="${release.title}" class="preview-song-cover">
+          <img src="${release.cover || 'https://via.placeholder.com/180x180?text=🎵'}" alt="${release.title}" class="preview-song-cover" loading="lazy">
           <h2 class="preview-song-title">${release.title}</h2>
-          <p class="preview-song-meta">${release.type} • ${release.year}</p>
+          <p class="preview-song-meta">${release.type.charAt(0).toUpperCase() + release.type.slice(1)} • ${release.year}</p>
         </div>
         
         <div class="preview-buttons">
-          ${release.links.spotify ? `
-            <a href="${release.links.spotify}" target="_blank" class="preview-btn" style="background:#1db954;">
-              <span class="icon">🎵</span>
-              <span>Spotify</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.apple ? `
-            <a href="${release.links.apple}" target="_blank" class="preview-btn" style="background:#fc3c44;">
-              <span class="icon">🍎</span>
-              <span>Apple Music</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.youtube ? `
-            <a href="${release.links.youtube}" target="_blank" class="preview-btn" style="background:#ff0000;">
-              <span class="icon">▶️</span>
-              <span>YouTube Music</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.audiomack ? `
-            <a href="${release.links.audiomack}" target="_blank" class="preview-btn" style="background:#ffa200;">
-              <span class="icon">🔊</span>
-              <span>Audiomack</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.boomplay ? `
-            <a href="${release.links.boomplay}" target="_blank" class="preview-btn" style="background:#e91e63;">
-              <span class="icon">💥</span>
-              <span>Boomplay</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.deezer ? `
-            <a href="${release.links.deezer}" target="_blank" class="preview-btn" style="background:#a238ff;">
-              <span class="icon">💜</span>
-              <span>Deezer</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.soundcloud ? `
-            <a href="${release.links.soundcloud}" target="_blank" class="preview-btn" style="background:#ff5500;">
-              <span class="icon">☁️</span>
-              <span>SoundCloud</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.amazon ? `
-            <a href="${release.links.amazon}" target="_blank" class="preview-btn" style="background:#00a8e1;">
-              <span class="icon">📦</span>
-              <span>Amazon Music</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
-          ${release.links.tidal ? `
-            <a href="${release.links.tidal}" target="_blank" class="preview-btn" style="background:#000;">
-              <span class="icon">🌊</span>
-              <span>TIDAL</span>
-              <span class="arrow">→</span>
-            </a>
-          ` : ''}
+          ${streamingLinks}
         </div>
         
-        ${profile.social ? `
-          <div class="preview-social">
-            ${profile.social.instagram ? `<a href="${profile.social.instagram}" target="_blank" class="preview-social-link">📸</a>` : ''}
-            ${profile.social.tiktok ? `<a href="${profile.social.tiktok}" target="_blank" class="preview-social-link">🎵</a>` : ''}
-            ${profile.social.twitter ? `<a href="${profile.social.twitter}" target="_blank" class="preview-social-link">🐦</a>` : ''}
-            ${profile.social.facebook ? `<a href="${profile.social.facebook}" target="_blank" class="preview-social-link">📘</a>` : ''}
-            ${profile.social.youtube ? `<a href="${profile.social.youtube}" target="_blank" class="preview-social-link">▶️</a>` : ''}
-            ${profile.social.website ? `<a href="${profile.social.website}" target="_blank" class="preview-social-link">🌐</a>` : ''}
-          </div>
-        ` : ''}
+        ${socialLinks ? `<div class="preview-social">${socialLinks}</div>` : ''}
         
         <div class="preview-footer">
-          <p>Powered by Holy Link</p>
+          <p>🎵 Powered by Holy Link</p>
         </div>
       `;
       
@@ -1772,22 +2064,27 @@
       // Track view
       currentUser.stats.views = (currentUser.stats.views || 0) + 1;
       saveUser();
+      renderDashboard();
     }
     
-    // ==================== SHARING ====================
     function shareLink() {
       const url = `${window.location.origin}${window.location.pathname}?u=${currentUser.id}`;
       
       if (navigator.share) {
         navigator.share({
           title: `${currentUser.profile.artistName} - ${currentUser.releases[0]?.title || 'Music'}`,
-          text: 'Check out my new music!',
+          text: '🎵 Check out my new music on Holy Link!',
           url: url
         }).then(() => {
           currentUser.stats.shares = (currentUser.stats.shares || 0) + 1;
           saveUser();
           renderDashboard();
-        }).catch(console.log);
+          showToast('Shared successfully! 🎉');
+        }).catch(err => {
+          if (err.name !== 'AbortError') {
+            console.log(err);
+          }
+        });
       } else {
         copyShareLink();
       }
@@ -1798,20 +2095,32 @@
       
       if (navigator.clipboard) {
         navigator.clipboard.writeText(url).then(() => {
-          showToast('Link copied to clipboard!');
+          showToast('Link copied to clipboard! 📋');
           currentUser.stats.shares = (currentUser.stats.shares || 0) + 1;
           saveUser();
+          renderDashboard();
+        }).catch(() => {
+          fallbackCopyToClipboard(url);
         });
       } else {
-        // Fallback
-        const textarea = document.createElement('textarea');
-        textarea.value = url;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        showToast('Link copied!');
+        fallbackCopyToClipboard(url);
       }
+    }
+    
+    function fallbackCopyToClipboard(url) {
+      const textarea = document.createElement('textarea');
+      textarea.value = url;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Link copied! 📋');
+      } catch (err) {
+        showToast('Failed to copy link', 'error');
+      }
+      document.body.removeChild(textarea);
     }
     
     // ==================== THEME ====================
